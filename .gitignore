@@ -1,0 +1,37 @@
+# Node modules (si alguna vez usas npm o yarn)
+node_modules/
+
+# Archivos de log
+*.log
+
+# Archivos de configuración de IDEs (como Visual Studio Code)
+.vscode/
+
+# Archivos de sistema (por ejemplo, de MacOS)
+.DS_Store
+
+# Archivos temporales de editores de texto
+*.swp
+*.bak
+
+# Archivos generados por el sistema operativo
+Thumbs.db
+ehthumbs.db
+
+# Docker: Ignorar archivos del contenedor si usas Docker para algo fuera de HTML estático
+.docker/
+
+# Directorios de compilación si alguna vez usas algún tipo de preprocesador o compilador (ej. SASS, TypeScript)
+dist/
+build/
+
+# Archivos de configuración de Docker
+docker-compose.yml
+
+# Si tienes alguna clave de API, archivos de configuración específicos que no quieras subir
+.env
+
+# Personal docs
+docker.txt
+git_routine.txt
+status.txt

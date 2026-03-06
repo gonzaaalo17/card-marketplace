@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <!-- <style> to be added to different elements -->
+        <title>Online Trading Card Marketplace</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Gonzalo Lopez">
+        <meta name="description" content="First time in web dev.">
+        <!--  viewport to make your website look good on all devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <img src="images/CardHeaven_right.png" alt="Centered logo" width="400" height="100">
+        </header>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="cardSaleForm.html">Sell</a> |
+            <a href="about.html">About</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+        <aside class="sidebar">
+            <article>
+                <h3>Filters:</h3>
+                <form>
+                    <label for="cardName">Search by card name:</label>
+                    <input type="text" id="cardName" name="cardName"><br>
+
+                    <label for="vendor">Vendor:</label>
+                    <input type="text" id="vendor" name="vendor"><br>
+
+                    <label for="game">Trading card game:</label><br>
+                    <select id="game" name="game">
+                        <option>Pokémon</option>
+                        <option>YugiOh!</option>
+                        <option>Adrenalyn</option>
+                    </select><br>
+
+                    <label for="condition">Card condition:</label><br>
+                    <select id="condition" name="condition">
+                        <option>Mint</option>
+                        <option>Near-mint</option>
+                        <option>Played</option>
+                        <option>Damaged</option>
+                    </select><br>
+
+                    <fieldset>
+                        <legend>Rarity level:</legend>
+                        <label><input type="radio" name="rarity" value="Ultra-rare" checked> Ultra-rare</label>
+                        <label><input type="radio" name="rarity" value="Rare"> Rare</label>
+                        <label><input type="radio" name="rarity" value="Uncommon"> Uncommon</label>
+                        <label><input type="radio" name="rarity" value="Common"> Common</label>
+                    </fieldset>
+
+                    <label for="date">Date of announcement:</label>
+                    <input type="date" id="date" name="date"><br>
+                    
+                </form>
+            </article>
+        </aside>
+        <div class="maincontent">
+            <h1>Check out our latest arrivals!🔥</h1>
+            <article>
+                <h3><a href="zoroark_details.html">N's Zoroark ex UR [SV9 131/100](Expansion Pack "Battle Partners")</a></h3>
+                <time datetime="2026-03-06">06/03/2026</time>
+                <p>Selling this N’s Zoroark ex card...</p>
+            </article>
+            <article>
+                <h3><a href="skull_details.html">Yu-Gi-Oh! Summoned Skull #003 First Edition (Metal Raiders)</a></h3>
+                <time datetime="2026-03-06">06/03/2026</time>
+                <p>🔥 YUGIOH Summoned Skull...</p>
+            </article>
+            <article>
+                <h3><a href="messi_details.html">Lionel Messi Balon de Oro 2012-13 #447 Adrenalyn XL Panini</a></h3>
+                <time datetime="2026-03-06">06/03/2026</time>
+                <p>Amazing super-ultra-rare 2012 Messi...</p>
+            </article>
+        </div>
+        <footer>
+            <hr>
+            <p><b>Copyleft CC-by 2025 by Gonzalo Lopez</b></p>
+        </footer>
+    </body>

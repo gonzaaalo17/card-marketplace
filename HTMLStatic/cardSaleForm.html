@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <!-- <style> to be added to different elements -->
+        <title>Online Trading Card Marketplace- Sell</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Gonzalo Lopez">
+        <meta name="description" content="First time in web dev.">
+        <!--  viewport to make your website look good on all devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <img src="images/CardHeaven_right.png" alt="Centered logo" width="400" height="100">
+        </header>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="cardSaleForm.html">Sell</a> |
+            <a href="about.html">About</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="maincontent">
+            <h2>Sell your card!</h2>
+            <form>
+                <label for="cardName">Card name:</label><br>
+                <input type="text" id="cardName" name="cardName"><br>
+
+                <label for="author">Author:</label><br>
+                <input type="text" id="author" name="author"><br>
+
+                <label for="date">Date of announcement:</label><br>
+                <input type="date" id="date" name="date"><br>
+
+                <label for="condition">Card condition:</label><br>
+                <select id="condition" name="condition">
+                    <option>Mint</option>
+                    <option>Near-mint</option>
+                    <option>Played</option>
+                    <option>Damaged</option>
+                </select><br>
+
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description"></textarea><br>
+
+                <label for="image">Card image:</label><br>
+                <input type="file" id="image" name="image"><br>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <footer>
+            <hr>
+            <p>Copyleft CC-by 2025 by Gonzalo Lopez</p>
+        </footer>
+    </body>
