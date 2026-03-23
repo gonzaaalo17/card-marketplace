@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- <style> to be added to different elements -->
+        <title>Card Heaven - Online Trading Card Marketplace</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Gonzalo Lopez">
+        <meta name="description" content="First time in web dev.">
+        <!--  viewport to make your website look good on all devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="CSS/sell.css">
+    </head>
+    <body>
+        <div class="body_container">
+             <header>
+                <div class="header-container">
+                    <!--  Links to other pages -->
+                    <nav>
+                    <ul id="nav_pages">
+                        <li class="page"><a href="home.html">Home</a></li>
+                        <li class="page"><a href="search.html">Search</a></li>
+                        <li class="page"><a href="sell.html">Sell</a></li>
+                        <li class="page"><a href="about.html">About</a></li>
+                        <li class="page"><a href="contact.html">Contact</a></li>
+                    </ul>
+                    </nav>
+                    <div id="account">
+                        <!--  These go on right hand side of page, same height as nav -->
+                        <button id="login" type="button">Log In</button>
+                        <button id="signup" type="button">Sign Up</button>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <section class="hero">
+                    <div id="logo_preview">
+                        <!--  Logo goes in the center of the page (size according to background) -->
+                        <img src="images/design/CardHeaven_centered_oneline.png" alt="Home page logo">
+                    </div>
+                    <div id ="title">
+                        <h1>Sell your card</h1>
+                    </div>
+                </section>
+
+                <section class="card"> 
+                    <div class="card_container">
+                        <form>
+                            <!--  Card Image should be fetched and placed on image frame -->
+                            <!-- Grid left side -->
+                            <div class="card_image">
+                                <div class="image_frame">
+                                    <!-- Img should be updated upon selection with JS (left as placeholder) -->
+                                    <img id="preview" src="" alt="Card preview" style="display:none;">
+                                    <p id="placeholder">Card Photo</p>
+                                </div>
+                                <input type="file" class="choose" name="card_image" accept="image/*">
+                            </div>
+                            <!-- Grid right side -->
+                            <div class="info">
+                                    <div class="card_name">
+                                        <label for="card_name_ip">Card name:</label>
+                                        <input type="text" id="card_name_ip" name="card_name_ip" placeholder="Charizard Holo" required>
+                                    </div>
+                                    <div class="vendor">
+                                        <label for="vendor_ip">Author:</label>
+                                        <input type="text" id="vendor_ip" name="vendor_ip" placeholder="Peter Parker" required>
+                                    </div>
+                                    <!-- For flexbox: one against the other -->
+                                    <div class="price-rarity">
+                                        <div class="price">
+                                            <label for="price_ip">Price:</label>
+                                            <input type="number" id="price_ip" name="price_ip" step="0.01" placeholder="10.00" required>
+                                        </div>
+                                        <div class="rarity">
+                                            <label for="rarity_ip">Rarity level:</label>
+                                            <select id="rarity_ip" name="rarity_ip" required>
+                                                <option>Ultra Rare</option>
+                                                <option>Rare</option>
+                                                <option>Uncommon</option>
+                                                <option>Common</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- For flexbox: one against the other -->
+                                    <div class="condition-collection">
+                                        <div class="condition">
+                                            <label for="condition_ip">Card condition:</label>
+                                            <select id="condition_ip" name="condition_ip" required>
+                                                <option>Mint</option>
+                                                <option>Near-Mint</option>
+                                                <option>Played</option>
+                                                <option>Damaged</option>
+                                            </select>
+                                        </div>
+                                        <div class="collection">
+                                            <label for="collection_ip">Collection:</label>
+                                            <select id="collection_ip" name="collection_ip" required>
+                                                <option>Pokémon</option>
+                                                <option>Yu-Gi-Oh!</option>
+                                                <option>Magic The Gathering</option>
+                                                <option>Sports</option>
+                                                <option>Other...</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="description">
+                                        <label for="description_ip">Description:</label>
+                                        <textarea id="description_ip" name="description_ip" placeholder="Describe your card..."></textarea>
+                                    </div>
+                                    <button class="submit" type="button">Submit</button>
+                            </div>
+                        </form>
+                    </div>            
+                </section>
+            </main>
+        </div>
+
+        <footer>
+            <p><b>Copyleft CC-by 2025 by Gonzalo Lopez</b></p>
+        </footer>
+    </body>

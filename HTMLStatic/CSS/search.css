@@ -1,0 +1,408 @@
+/* GENERAL */
+body {
+    display: grid;
+    grid-template-rows:
+        auto   /* header */
+        auto   /* hero */
+        auto   /* content */
+        auto;  /* footer */
+
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+}
+
+.body_container {
+    background-image: url("../images/design/background.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+main {
+    margin-bottom: 200px;
+}
+
+/* HEADER (igual que home) */
+.header-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 90px;
+}
+
+nav {
+    justify-self: start;
+    margin-left: 40px;
+}
+
+#nav_pages {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page a {
+    margin-right: 40px;
+    font-size: 18px;
+    color: #3B3B3F;
+    text-decoration: none;
+}
+
+#account {
+    justify-self: end;
+    margin-right: 40px;
+}
+
+#login, #signup {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 50px;
+    height: 40px;
+    width: 150px;
+    margin-left: 10px;
+}
+
+#login {
+    border: none;
+    color: white;
+    background-color: #7CBFFC;
+}
+
+#signup {
+    background-color: transparent;
+    color: #B2B3B6;
+    border: 2px solid #B2B3B6;
+}
+
+/* HERO SEARCH */
+
+#logo_home img{
+    height: 330px;
+    width: auto;
+}
+
+.hero_search {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    margin-bottom: 60px;
+}
+
+.hero_search h1 {
+    font-size: 40px;
+    font-weight: 600;
+    color: #7CBFFC;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff;
+}
+
+/* SEARCH BAR */
+.search-container {
+    display: flex;
+    border-radius: 50px;
+    border: 2px solid #B2B3B6;
+    background: white;
+    overflow: hidden;
+    margin: 20px 0 40px 0;
+}
+
+#search_bar {
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 700px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+#search_button {
+    margin-left: 20px;
+    background-image: url("../images/design/magnifying-glass-3.png");
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    width: 40px;
+    background-color: transparent;
+}
+
+/* CATEGORIES */
+.categories {
+    display: flex;
+    align-items: center;
+}
+
+.category, #category-football {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url("../images/design/button.png");
+    background-size: 200px 65px;
+    background-repeat: no-repeat;
+    border: none;
+    background-color: transparent;
+
+    height: 65px;
+    width: 200px;
+    margin-left: 25px;
+}
+
+.category img {
+    width: 100px;
+}
+
+#category-football {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#category-football img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+/* CONTENT LAYOUT */
+.search_content {
+    display: grid;
+    grid-template-columns: 350px auto;
+    gap: 40px;
+    padding: 0 40px;
+}
+
+/* FILTERS */
+.filters {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    border: 4px solid white;
+    border-radius: 25px;
+    padding: 20px;
+
+    background-image: linear-gradient(to bottom right, #F0F8FD, transparent);
+}
+
+.filters h2 {
+    margin-bottom: 20px;
+}
+
+.filters label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.filters input, .filters select {
+    border-radius: 20px;
+    border: 1px solid #B2B3B6;
+    height: 35px;
+    padding-left: 10px;
+}
+
+/* filter buttons */
+.filter-btn {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    border-radius: 20px;
+    border: 1px solid #B2B3B6;
+    background: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.filter-btn img {
+    height: 30px;
+    margin-right: 5px;
+}
+
+/* radio */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.date {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* apply button */
+.apply {
+    margin-top: 20px;
+    align-self: center;
+
+    background-color: #7CBFFC;
+    color: white;
+    border: none;
+    border-radius: 50px;
+
+    width: 150px;
+    height: 45px;
+    font-weight: 600;
+}
+
+/* RESULTS */
+.results {
+    display: flex;
+    flex-direction: column;
+}
+
+/* header */
+.results_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sort {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+    border-radius: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: 20px;
+}
+
+/* CARD ITEM */
+.card_item {
+    display: grid;
+    grid-template-columns: 150px auto 200px;
+    align-items: center;
+
+    border: 4px solid white;
+    border-radius: 25px;
+
+    background-image: linear-gradient(to bottom right, #F0F8FD, transparent);
+
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+/* info */
+.card_info {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.card_image {
+    height: 200px;
+    border-radius: 10px;
+}
+
+.card_info h2 {
+    margin: 0;
+}
+
+.game_logo {
+    height: 50px;
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.meta {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+}
+
+.meta div{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.meta img {
+    height: 30px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.extra {
+    font-size: 14px;
+    color: #6b6b6b;
+}
+
+/* price */
+.card_price {
+    text-align: right;
+}
+
+.card_price p {
+    font-size: 22px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.viewmore {
+    margin-top: 10px;
+
+    background-image: url("../images/design/button.png");
+    background-size: 170px 40px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+
+    width: 170px;
+    height: 40px;
+
+    font-weight: bold;
+
+}
+
+/* PAGINATION */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pagination button {
+    margin: 15px;
+    border-radius: 50%;
+    border: 2px solid #B2B3B6;
+    background: transparent;
+
+    width: 60px;
+    height: 60px;
+
+    font-family: 'Montserrat';
+    color: #B5B6BA;
+}
+
+.pagination .active {
+    background-color: #7CBFFC;
+    color: white;
+    border: none;
+}
+
+/* FOOTER */
+footer {
+    background-color: white;
+    color: #B5B6BA;
+    font-size: 15px;
+    font-weight: 200;
+}

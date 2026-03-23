@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Card Heaven - Search</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Gonzalo Lopez">
+    <meta name="description" content="Search cards marketplace">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="CSS/search.css">
+</head>
+
+<body>
+<div class="body_container">
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <nav>
+                <ul id="nav_pages">
+                    <li class="page"><a href="home.html">Home</a></li>
+                    <li class="page"><a href="search.html">Search</a></li>
+                    <li class="page"><a href="sell.html">Sell</a></li>
+                    <li class="page"><a href="about.html">About</a></li>
+                    <li class="page"><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div id="account">
+                <button id="login" type="button">Log In</button>
+                <button id="signup" type="button">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- HERO / SEARCH -->
+        <section class="hero_search">
+
+            <div id="logo_home">
+                <!--  Logo goes in the center of the page (size according to background) -->
+                <img src="images/design/CardHeaven_centered.png" alt="Home page logo">
+            </div>
+
+            <h1>Search For Cards</h1>
+
+            <div class="search-container">
+                <button id="search_button" type="submit"></button>
+                <input id="search_bar" type="search" placeholder="Search for cards...">
+            </div>
+
+            <!-- Categories -->
+            <div class="categories">
+                <button class="category">
+                    <img src="images/design/pokemon_trading_card_game_logo.png">
+                </button>
+
+                <button class="category">
+                    <img src="images/design/Yu-Gi-Oh-Logo.png">
+                </button>
+
+                <button class="category">
+                    <img src="images/design/Magic-The-Gathering-Logo.png">
+                </button>
+
+                <button id="category-football">
+                    <img src="images/design/football.png">
+                    Sports
+                </button>
+            </div>
+
+        </section>
+
+        <!-- CONTENT -->
+        <section class="search_content">
+
+            <!-- FILTERS -->
+            <aside class="filters">
+
+                <h2>Filters:</h2>
+
+                <label>Search by name:</label>
+                <input type="text">
+
+                <label>Vendor:</label>
+                <input type="text">
+
+                <label>Trading card game:</label>
+                <button class="filter-btn">
+                    <img src="images/design/pokeball.png" alt="pokemon_symbol">Pokémon
+                </button>
+                <button class="filter-btn">
+                    <img src="images/design/bakura.png" alt="yugioh_symbol">Yu-Gi-Oh!
+                </button>
+                <button class="filter-btn">
+                    <img src="images/design/MGT_symbol.png" alt="MTG_symbol">Magic The Gathering
+                </button>
+                <button class="filter-btn">
+                    <img src="images/design/football.png" alt="football">Sports
+                </button>
+                <button class="filter-btn">Other...</button>
+
+
+                <label>Card condition:</label>
+                <button class="filter-btn">
+                    <img src="images/design/mint.png" alt="mint">Mint
+                </button>
+                <button class="filter-btn">
+                    <img src="images/design/near_mint.png" alt="near_mint">Near-mint
+                </button>
+                <button class="filter-btn">
+                    <img src="images/design/played.png" alt="played">Played
+                </button>
+                <button class="filter-btn">
+                    <img src="images/design/damaged.png" alt="damaged">Damaged
+                </button>
+
+                <label>Rarity level:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="rarity"> Ultra-rare</label>
+                    <label><input type="radio" name="rarity"> Rare</label>
+                    <label><input type="radio" name="rarity"> Uncommon</label>
+                    <label><input type="radio" name="rarity"> Common</label>
+                </div>
+
+                <label>Date of announcement:</label>
+                <input class="date" type="date">
+
+                <button class="apply">Apply</button>
+
+            </aside>
+
+            <!-- RESULTS -->
+            <div class="results">
+
+                <div class="results_header">
+                    <p>Showing 1-3 out of 1,050 results</p>
+
+                    <select class="sort">
+                        <option>Sort By</option>
+                        <option>Price</option>
+                        <option>Date</option>
+                        <option>Rarity</option>
+                    </select>
+                </div>
+
+                <!-- CARD ITEM -->
+                <div class="card_item">
+
+                    <a href="card.html"><img class="card_image" src="images/gyara2.jpg"></a>
+
+                    <div class="card_info">
+                        <h2>Red Gyarados eX [SV9 131/100] UR</h2>
+
+                        <img class=game_logo src="images/design/pokemon_trading_card_game_logo.png">
+
+                        <div class="meta">
+                            <div class="vendor">
+                                <img src="images/design/user.png" alt="User Icon">
+                                Gonzalo Lopez
+                            </div>
+                            <div class="date">
+                                <img src="images/design/calendar.png" alt="Calendar Icon">
+                                10/03/2026
+                            </div>
+                        </div>
+
+                        <p class="extra">Ultra Rare | Mint</p>
+                    </div>
+
+                    <div class="card_price">
+                        <p>$149,99</p>
+                        <button class="viewmore">View More</button>
+                    </div>
+
+                </div>
+
+                <!-- CARD ITEM -->
+                <div class="card_item">
+
+                    <a href="card.html"><img class="card_image" src="images/dragon.jpg"></a>
+
+                    <div class="card_info">
+                        <h2>Yu-Gi-Oh! Blue-eyes dragon (Full art)</h2>
+
+                        <img class="game_logo" src="images/design/Yu-Gi-Oh-Logo.png">
+
+                        <div class="meta">
+                            <div class="vendor">
+                                <img src="images/design/user.png" alt="User Icon">
+                                Gonzalo Lopez
+                            </div>
+                            <div class="date">
+                                <img src="images/design/calendar.png" alt="Calendar Icon">
+                                10/03/2026
+                            </div>
+                        </div>
+
+                        <p class="extra">Ultra Rare | Mint</p>
+                    </div>
+
+                    <div class="card_price">
+                        <p>$149,99</p>
+                        <button class="viewmore">View More</button>
+                    </div>
+
+                </div>
+
+                <!-- CARD ITEM -->
+                <div class="card_item">
+
+                    <a href="card.html"><img class="card_image" src="images/steve.jpg"></a>
+
+                    <div class="card_info">
+                        <h2>NBA Rare Steve Curry - G.S Warriors</h2>
+
+                        <p class="game_logo">⚽ Sports</p>
+
+                        <div class="meta">
+                            <div class="vendor">
+                                <img src="images/design/user.png" alt="User Icon">
+                                Gonzalo Lopez
+                            </div>
+                            <div class="date">
+                                <img src="images/design/calendar.png" alt="Calendar Icon">
+                                10/03/2026
+                            </div>
+                        </div>
+
+                        <p class="extra">Rare | Near-Mint</p>
+                    </div>
+
+                    <div class="card_price">
+                        <p>$149,99</p>
+                        <button class="viewmore">View More</button>
+                    </div>
+
+                </div>
+
+                <!-- CARD ITEM -->
+                <div class="card_item">
+
+                    <a href="card.html"><img class="card_image" src="images/random_dragon.jpg"></a>
+
+                    <div class="card_info">
+                        <h2>Random Dragon- MTG ULTRA RARE!</h2>
+
+                        <img class="game_logo" src="images/design/Magic-The-Gathering-Logo.png">
+
+                        <div class="meta">
+                            <div class="vendor">
+                                <img src="images/design/user.png" alt="User Icon">
+                                Gonzalo Lopez
+                            </div>
+                            <div class="date">
+                                <img src="images/design/calendar.png" alt="Calendar Icon">
+                                10/03/2026
+                            </div>
+                        </div>
+
+                        <p class="extra">Rare | Near-Mint</p>
+                    </div>
+
+                    <div class="card_price">
+                        <p>$149,99</p>
+                        <button class="viewmore">View More</button>
+                    </div>
+
+                </div>
+
+                <!-- PAGINATION -->
+                <div class="pagination">
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>&gt;</button>
+                    <button>&gt;&gt;</button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p><b>Copyleft CC-by 2025 by Gonzalo Lopez</b></p>
+</footer>
+
+</body>
+</html>

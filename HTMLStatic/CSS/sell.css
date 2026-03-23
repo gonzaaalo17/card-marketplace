@@ -1,0 +1,307 @@
+body {
+    /*Grid*/
+    display:grid;
+    grid-template-rows:
+        auto   /* header */
+        auto   /* hero */
+        auto   /* card */
+        auto;  /* footer */
+    justify-items:stretch;
+    text-align:center;
+    margin: 0;
+    padding: 0;
+    /*Text font*/
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+}
+
+.body_container {
+    /*Background*/
+    background-image: url("../images/design/card_preview_background.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position:top;
+}
+
+main {
+    margin-bottom: 150px;
+}
+
+/* header */
+.header-container{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    margin-top: 30px;
+}
+
+nav {
+    justify-self:start;
+    margin-left: 40px;
+}
+
+#nav_pages {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#account {
+    justify-self:end;
+    margin-right: 40px;
+}
+
+.page a {
+    margin-right: 40px;
+    /*Font*/
+    font-size: 18px;
+    color: #3B3B3F;
+    text-decoration: none;
+}
+
+#login, #signup {
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    margin-left: 10px;
+    border-radius: 50px;
+    height: 40px;
+    width: 150px;
+}
+
+#login {
+    outline: none;
+    border: none;
+    color: white;
+    background-color: #7CBFFC;
+}
+
+#signup {
+    background-color: transparent;
+    outline: none;
+    color: #B2B3B6;
+    border: 2px solid #B2B3B6;
+}
+
+/* hero */
+.hero {
+    display:grid;
+    grid-template-rows: auto auto;
+    justify-items:center;
+    text-align:center;
+
+}
+#logo_preview {
+    margin-bottom: 80px;
+}
+
+#logo_preview img{
+    height: 200px;
+    width: auto;
+}
+
+#title h1{
+    /*Font*/
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 40px;
+    color: #7CBFFC;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #fff,
+        0 0 20px #fff;
+}
+
+/* card */
+.card {
+    display: flex;
+    justify-content: center;
+}
+
+.card h2 {
+    font-size: 30px;
+}
+
+.card_container {
+    width: 1350px;
+    border: 6px solid white;
+    border-radius: 30px;
+    background-image: linear-gradient(to bottom right, #F0F8FD, transparent);
+}
+
+form {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-items: left;
+    align-items: left;
+    width: 100%;
+    height: 100%;
+}
+
+.card_image {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+}
+
+.image_frame {
+    height: 500px;
+    width: 350px;
+    border-radius: 30px;
+    border: #B5B6BA, solid, 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image_frame p {
+    font-size: 25px;
+    color: #B2B3B6;
+}
+
+.choose {
+    font-family: 'Montserrat';
+    color: #B2B3B6;
+}
+
+/*
+Change button appearence for different browsers:
+-webkit-file-upload-button -> Chrome, Edge, Safari
+-file-selector-button -> Firefox and modern browsers
+*/
+.choose::-webkit-file-upload-button {
+    align-self: center;
+    font-size: 16px;
+    font-family: 'Montserrat';
+    outline: none;
+    border: 2px solid #B2B3B6;
+    border-radius: 50px;
+    color: #B2B3B6;
+    background-color: transparent;
+    height: 50px;
+    width: 150px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.choose::file-selector-button {
+    align-self: center;
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    outline: none;
+    border: 2px solid #B2B3B6;
+    border-radius: 50px;
+    color: #B2B3B6;
+    background-color: transparent;
+    height: 50px;
+    width: 150px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+/* form */
+.info {
+    margin-top: 30px;
+    text-align: left;
+    align-items: left;
+    justify-content: left;
+}
+
+.info textarea, 
+.info select,
+.info input {
+    padding: 10px 15px;
+    height: auto;
+    background-color: white;
+    border-radius: 50px;
+    border: 2px solid #B2B3B6;
+    font-family: 'Montserrat';
+} 
+
+.info textarea {
+    height: 100px; /* antes 20px */
+    border-radius: 20px;
+}
+
+.info label {
+    margin-bottom: 5px;
+}
+
+.price-rarity{
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+}
+
+.condition-collection{
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+}
+
+.card_name,
+.vendor,
+.price,
+.rarity,
+.condition,
+.collection,
+.description {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.submit {
+    align-self: center;
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 50px;
+    color: white;
+    background-color: #7CBFFC;
+    height: 50px;
+    width: 200px;
+    margin-bottom: 30px;
+}
+
+.card_name input, .vendor input{
+    width: 610px;
+}
+
+.info select {
+    width: 295px;
+    margin-right: 20px;
+}
+
+#condition_ip{
+    width: 330px;
+    margin-right: 20px;
+}
+
+.price input{
+    width: 295px;
+    margin-right: 20px;
+}
+
+.description textarea{
+    height: 140px;
+
+}
+
+/*footer*/
+footer {
+    background-color: white;
+    align-items: center;
+    color: #B5B6BA;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    font-weight: 200;
+}

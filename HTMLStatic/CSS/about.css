@@ -1,0 +1,163 @@
+body {
+    /*Grid*/
+    display:grid;
+    grid-template-rows:
+        auto   /* header */
+        auto   /* hero */
+        auto   /* card */
+        auto;  /* footer */
+    justify-items:stretch;
+    text-align:center;
+    margin: 0;
+    padding: 0;
+    /*Text font*/
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+}
+
+.body_container {
+    /*Background*/
+    background-image: url("../images/design/card_preview_background.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position:top;
+}
+
+main {
+    margin-bottom: 150px;
+}
+
+/* header */
+.header-container{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    margin-top: 30px;
+}
+
+nav {
+    justify-self:start;
+    margin-left: 40px;
+}
+
+#nav_pages {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#account {
+    justify-self:end;
+    margin-right: 40px;
+}
+
+.page a {
+    margin-right: 40px;
+    /*Font*/
+    font-size: 18px;
+    color: #3B3B3F;
+    text-decoration: none;
+}
+
+#login, #signup {
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    margin-left: 10px;
+    border-radius: 50px;
+    height: 40px;
+    width: 150px;
+}
+
+#login {
+    outline: none;
+    border: none;
+    color: white;
+    background-color: #7CBFFC;
+}
+
+#signup {
+    background-color: transparent;
+    outline: none;
+    color: #B2B3B6;
+    border: 2px solid #B2B3B6;
+}
+
+/* hero */
+.hero {
+    display:grid;
+    grid-template-rows: auto auto;
+    justify-items:center;
+    text-align:center;
+
+}
+#logo_preview {
+    margin-bottom: 80px;
+}
+
+#logo_preview img{
+    height: 200px;
+    width: auto;
+}
+
+#title h1{
+    /*Font*/
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 40px;
+    color: #7CBFFC;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #fff,
+        0 0 20px #fff;
+}
+
+/* about */
+.about {
+    display: flex;
+    justify-content: center;
+}
+
+.about h2 {
+    font-size: 30px;
+}
+
+.about p {
+    margin-left: 30px;
+    margin-right: 30px;
+    text-align: justify;
+}
+
+.container {
+    width: 1000px;
+    border: 6px solid white;
+    border-radius: 30px;
+    background-image: linear-gradient(to bottom right, #F0F8FD, transparent);
+}
+
+.github {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.github img {
+    height: 50px;
+    width: 60px;
+    margin-right: 20px;
+}
+
+/*footer*/
+footer {
+    background-color: white;
+    text-align: center;
+    color: #B5B6BA;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    font-weight: 200;
+}
