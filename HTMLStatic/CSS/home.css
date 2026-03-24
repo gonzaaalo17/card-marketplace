@@ -1,34 +1,32 @@
+/* GENERAL */
 body {
-    /*Grid*/
-    display:grid;
+    display: grid;
     grid-template-rows:
         auto   /* header */
         auto   /* hero */
-        auto   /* latest */
-        auto   /* topvendors */
+        auto   /* content */
         auto;  /* footer */
-    justify-items:stretch;
-    text-align:center;
+
     margin: 0;
     padding: 0;
-    /*Text font*/
+    text-align: center;
     font-family: 'Montserrat';
+    color: #3B3B3F;
 }
 
 .body_container {
-    /*Background*/
     background-image: url("../images/design/background.png");
     background-size: 100%;
     background-repeat: no-repeat;
-    background-position:top;
+    background-position: top;
 }
 
 main {
-    margin-bottom: 250px;
+    margin-bottom: 200px;
 }
 
-/* header */
-.header-container{
+/* HEADER (igual que home) */
+.header-container {
     display: grid;
     grid-template-columns: auto auto;
     width: 100%;
@@ -37,44 +35,40 @@ main {
 }
 
 nav {
-    justify-self:start;
+    justify-self: start;
     margin-left: 40px;
 }
 
 #nav_pages {
     display: flex;
     list-style: none;
-    margin: 0;
     padding: 0;
-}
-
-#account {
-    justify-self:end;
-    margin-right: 40px;
+    margin: 0;
 }
 
 .page a {
     margin-right: 40px;
-    /*Font*/
     font-size: 18px;
     color: #3B3B3F;
     text-decoration: none;
 }
 
+#account {
+    justify-self: end;
+    margin-right: 40px;
+}
+
 #login, #signup {
-    width: auto;
-    height: auto;
-    font-size: 16px;
     font-family: 'Montserrat';
+    font-size: 16px;
     font-weight: 600;
-    margin-left: 10px;
     border-radius: 50px;
     height: 40px;
     width: 150px;
+    margin-left: 10px;
 }
 
 #login {
-    outline: none;
     border: none;
     color: white;
     background-color: #7CBFFC;
@@ -82,134 +76,104 @@ nav {
 
 #signup {
     background-color: transparent;
-    outline: none;
     color: #B2B3B6;
     border: 2px solid #B2B3B6;
 }
 
-/* hero */
-.hero {
-    display:grid;
-    grid-template-rows: auto auto auto;
-    justify-items:center;
-    text-align:center;
-
-}
-#logo_home {
-    margin-bottom: 30px;
-}
+/* HERO SEARCH */
 
 #logo_home img{
     height: 330px;
     width: auto;
 }
 
-#search h1{
-    /*Font*/
-    font-family: 'Montserrat';
-    font-weight: 600;
+.hero {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    margin-bottom: 60px;
+}
+
+.hero h1 {
     font-size: 40px;
+    font-weight: 600;
     color: #7CBFFC;
-    text-shadow: 
+    text-shadow:
         0 0 5px #fff,
         0 0 10px #fff,
-        0 0 15px #fff,
         0 0 20px #fff;
 }
 
+/* SEARCH BAR */
 .search-container {
     display: flex;
     border-radius: 50px;
     border: 2px solid #B2B3B6;
     background: white;
     overflow: hidden;
-    margin-bottom: 45px;
+    margin: 20px 0 40px 0;
 }
 
 #search_bar {
-    outline: none;
     border: none;
+    outline: none;
     height: 50px;
-    width: 800px;
-    background: transparent;
+    width: 700px;
     margin-left: 10px;
-    /*Font*/
-    font-family: 'Montserrat';
     font-size: 16px;
-    
-} 
+}
 
 #search_button {
     margin-left: 20px;
     background-image: url("../images/design/magnifying-glass-3.png");
-    background-position: center;
-    background-size: cover;
-    background-color: transparent;
     background-size: 30px;
     background-repeat: no-repeat;
+    background-position: center;
     border: none;
     width: 40px;
-    height: 50px;
-}
-
-#categories {
-    display: flex;
-    align-items: center;
-}
-
-.category {
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    justify-content: center;
-    background-image: url("../images/design/button.png");
-    background-position: center;
-    background-size: cover;
     background-color: transparent;
+}
+
+/* CATEGORIES */
+.categories {
+    display: flex;
+    align-items: center;
+}
+
+.category, #category-football {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url("../images/design/button.png");
     background-size: 200px 65px;
     background-repeat: no-repeat;
     border: none;
-    height: 80px;
+    background-color: transparent;
+
+    height: 65px;
     width: 200px;
     margin-left: 25px;
-    margin-bottom: 250px;
 }
 
 .category img {
     width: 100px;
-    height: 55px;
 }
 
 #category-football {
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    justify-content: center;
-    background-image: url("../images/design/button.png");
-    background-position: center;
-    background-size: cover;
-    background-color: transparent;
-    background-size: 200px 60px;
-    background-repeat: no-repeat;
-    border: none;
-    height: 80px;
-    width: 200px;
-    margin-left: 25px;
-    margin-bottom: 250px;
-    /*Font*/
-    font-family: 'Montserrat';
     font-weight: bold;
     font-size: 18px;
-    color: #3B3B3F;
 }
 
 #category-football img {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    margin-right: 10px;
 }
+
 
 /* latest */
 .latest {
+    margin-top: 250px;
     display:grid;
     justify-items:center;
     text-align:center;
@@ -217,57 +181,50 @@ nav {
 
 .latest h2 {
     color: #3B3B3F;
-    font-family: 'Montserrat';
     font-weight: 600;
-    font-size: 30px;
+    font-size: clamp(20px, 3vw, 30px); /* FIX */
 }
 
 .latest_list {
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 100%; /* FIX */
+    max-width: 1200px;
 }
 
 .latest_item { 
     display:grid;
     grid-template-rows:auto auto;
     justify-items:center;
-    margin-left: 40px;
 }
 
 .latest_item img {
     border-radius: 10px;
-    height: 400px;
-    width: auto;
+    height: auto;
+    max-height: 400px;
 }
 
 .viewmore {
     display: flex;
     align-items: center;
-    justify-items: center;
     justify-content: center;
     background-image: url("../images/design/button.png");
-    background-position: center;
-    background-size: cover;
-    background-color: transparent;
     background-size: 170px 40px;
     background-repeat: no-repeat;
+    background-color: transparent;
     border: none;
     height: 40px;
     width: 170px;
     margin-top: 20px;
-    margin-left: 25px;
-    margin-bottom: 500px;
-    /*Font*/
-    font-family: 'Montserrat';
     font-weight: bold;
     font-size: 18px;
     color: #3B3B3F;
-
 }
 
-/*topvendors*/
+/* topvendors */
 .topvendors {
+    margin-top: 500px;
     display: grid;
     grid-template-rows: auto auto;
     justify-items:center;
@@ -276,55 +233,36 @@ nav {
 
 .topvendors h3 {
     color: #3B3B3F;
-    font-family: 'Montserrat';
     font-weight: 600;
-    font-size: 25px;
+    font-size: clamp(18px, 3vw, 25px); /* FIX */
 }
 
 .carousel {
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 100%; /* FIX */
+    overflow: hidden; /* FIX */
 }
 
 .carousel_list {
     display: flex;
+    overflow-x: auto; /* FIX */
 }
 
 .carousel_item {
     margin: 10px;
     text-decoration: none;
-}
-
-#right {
-    height: 100px;
-    width: 100px;
-    background-color: transparent;
-    background-image: url("../images/design/right-button.png");
-    background-repeat: no-repeat;
-    background-size: 100px 100px;
-    border: none;
-}
-
-#left {
-    height: 100px;
-    width: 100px;
-    background-color: transparent;
-    background-image: url("../images/design/left-button.png");
-    background-repeat: no-repeat;
-    background-size: 100px 100px;
-    border: none;
+    flex: 0 0 auto; /* FIX */
 }
 
 .carousel_item img {
     border-radius: 10px;
-    height: 260px;
-    width: auto;
+    max-width: 180px; /* FIX */
+    max-height: 200px;
 }
 
 .carousel_item p {
-    /*Font*/
-    font-family: 'Montserrat';
     font-weight: 600;
     font-size: 20px;
     color: #7CBFFC;
@@ -335,13 +273,30 @@ nav {
         0 0 20px #fff;
 }
 
-/*footer*/
+/* buttons */
+#right, #left {
+    height: 80px; /* ligeramente más adaptable */
+    width: 80px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain; /* FIX */
+    border: none;
+}
+
+#right {
+    background-image: url("../images/design/right-button.png");
+}
+
+#left {
+    background-image: url("../images/design/left-button.png");
+}
+
+/* footer */
 footer {
     background-color: white;
-    justify-self: stretch;
-    align-self: stretch;
     color: #B5B6BA;
     font-family: 'Montserrat';
     font-size: 15px;
     font-weight: 200;
+    width: 100%; /* FIX */
 }

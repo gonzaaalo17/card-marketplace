@@ -121,7 +121,8 @@ nav {
 }
 
 .container {
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
     border: 6px solid white;
     border-radius: 30px;
     background-image: linear-gradient(to bottom right, #F0F8FD, transparent);
@@ -156,7 +157,8 @@ form {
 }
 
 .fields input {
-    width: 700px;
+    max-width: 700px;
+    width: 100%;
 }
 
 .fields textarea {
@@ -228,4 +230,12 @@ footer {
     font-family: 'Montserrat';
     font-size: 15px;
     font-weight: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+footer p {
+    margin: 0;
 }

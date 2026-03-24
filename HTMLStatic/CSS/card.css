@@ -134,7 +134,8 @@ nav {
     grid-template-columns: auto auto;
     justify-items: left;
     align-items: left;
-    width: 1350px;
+    width: 100%;
+    max-width: 1350px; 
     border: 6px solid white;
     border-radius: 30px;
     background-image: linear-gradient(to bottom right, #F0F8FD, transparent);
@@ -181,7 +182,8 @@ nav {
 }
 
 .card_image img {
-    height: 500px;
+    height: 100%;
+    max-height: 500px;
     width:auto;
     border-radius: 10px;
 }
@@ -200,9 +202,18 @@ nav {
 /*footer*/
 footer {
     background-color: white;
-    align-items: center;
     color: #B5B6BA;
     font-family: 'Montserrat';
     font-size: 15px;
     font-weight: 200;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px 0;
+}
+
+footer p {
+    margin: 0;
 }

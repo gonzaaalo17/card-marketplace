@@ -131,7 +131,8 @@ nav {
 }
 
 .container {
-    width: 1000px;
+    max-width: 1000px;
+    width: 100%;
     border: 6px solid white;
     border-radius: 30px;
     background-image: linear-gradient(to bottom right, #F0F8FD, transparent);
@@ -155,9 +156,17 @@ nav {
 /*footer*/
 footer {
     background-color: white;
-    text-align: center;
+    align-items: center;
     color: #B5B6BA;
     font-family: 'Montserrat';
     font-size: 15px;
     font-weight: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+footer p {
+    margin: 0;
 }

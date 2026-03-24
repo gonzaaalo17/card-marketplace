@@ -125,7 +125,8 @@ nav {
 }
 
 .card_container {
-    width: 1350px;
+    width: 100%;
+    max-width: 1350px; 
     border: 6px solid white;
     border-radius: 30px;
     background-image: linear-gradient(to bottom right, #F0F8FD, transparent);
@@ -150,8 +151,11 @@ form {
 }
 
 .image_frame {
+    height: 100%;
+    max-height: 500px;
     height: 500px;
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
     border-radius: 30px;
     border: #B5B6BA, solid, 3px;
     display: flex;
@@ -304,4 +308,12 @@ footer {
     font-family: 'Montserrat';
     font-size: 15px;
     font-weight: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+footer p {
+    margin: 0;
 }
