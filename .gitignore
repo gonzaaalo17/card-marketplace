@@ -35,3 +35,7 @@ docker-compose.yml
 docker.txt
 git_routine.txt
 status.txt
+
+# Other
+*.TMP
+*.Identifier

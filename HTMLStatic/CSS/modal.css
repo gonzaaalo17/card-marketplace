@@ -1,0 +1,176 @@
+/* OCULTO */
+.hidden {
+    display: none;
+    pointer-events: none;
+}
+
+/* Blur background */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0,0,0,0.3);
+    z-index: 1000;
+    pointer-events: auto;
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    z-index: 1001;
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    width: 90%;         
+    max-width: 900px;   
+    display: flex;      
+    justify-content: center;
+}
+
+/* cuando se muestra */
+.modal.show {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+
+/*Close Button*/
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #3B3B3F;
+}
+
+/*Form*/
+.modal_container {
+    position: relative;
+    background-color: white;
+    width: 100%;
+    max-width: 500px;
+    padding: 15px 30px;
+    border: 6px solid white;
+    border-radius: 30px;
+}
+
+/* hero */
+.modal_hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: end;
+}
+
+.modal_hero h1{
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 25px;
+    color: #7CBFFC;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #fff,
+        0 0 20px #fff;
+}
+
+.modal_hero img {
+    height: 100%;
+    width: auto;
+    max-height: 100px;
+}
+
+.modal_fields div{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.modal_fields input{
+    z-index: 1002;
+    padding-left: 15px;
+    background-color: white;
+    border-radius: 50px;
+    border: 2px solid #B2B3B6;
+    font-family: 'Montserrat';
+    max-width: 490px;
+    width: 100%;
+    height: 30px;
+} 
+
+.modal_fields label {
+    margin-bottom: 5px;
+}
+
+.error.hidden {
+    display: none;
+}
+
+.error {
+    color: red;
+    font-size: 10px;
+}
+
+.modal_fields p {
+    text-decoration-line: underline;
+    margin-left: 10px;
+    font-size: 11px;
+}
+
+.modal_buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.modal_submit{
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 50px;
+    color: white;
+    background-color: #7CBFFC;
+    height: 100%;
+    width: 100%;
+    height: 40px;
+    max-width: 300px;
+}
+
+.modal_google, .modal_apple {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    outline: none;
+    border: 2px solid #B2B3B6;
+    border-radius: 50px;
+    background-color: transparent;
+    color: #B2B3B6;
+    height: 100%;
+    width: 100%;
+    height: 40px;
+    max-width: 300px;
+}
+
+.modal_google img, .modal_apple img {
+    height: auto;
+    width: auto;
+    max-height: 20px;
+}
