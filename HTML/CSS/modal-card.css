@@ -1,0 +1,146 @@
+/* MODAL */
+.modal_card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    z-index: 1001;
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    width: 90%;            
+    display: flex;      
+    justify-content: center;
+}
+
+/* cuando se muestra */
+.modal_card.show {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+
+/*Close Button*/
+.close_card {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #3B3B3F;
+}
+
+/*Form*/
+.modal_card_container {
+    position: relative;
+    background-image: linear-gradient(to bottom right, white, #a7c8e6);
+    width: 100%;
+    max-width: 1000px;
+    padding: 15px 30px;
+    border: 6px solid white;
+    border-radius: 30px;
+}
+
+/* hero */
+.modal_card_hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: end;
+}
+
+.modal_card_hero h1{
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 35px;
+    color: #7CBFFC;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #fff,
+        0 0 20px #fff;
+}
+
+.modal_card_hero img {
+    height: 100%;
+    width: auto;
+    max-height: 100px;
+}
+
+
+/*card*/
+.modal_card_view {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.card h2 {
+    font-size: 30px;
+}
+
+.modal_price {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+
+.modal_card_image {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    filter: drop-shadow(8px 8px 10px white);
+}
+
+.modal_buy {
+    align-self: center;
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 50px;
+    color: white;
+    background-color: #7CBFFC;
+    height: 50px;
+    width: 200px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+
+}
+
+.modal_info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 80px;
+    margin-right: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.modal_vendor, .modal_date, .modal_condition {
+    display: flex;
+    align-items: center;
+}
+
+.modal_card_image img {
+    height: 100%;
+    max-height: 500px;
+    width:auto;
+    border-radius: 10px;
+}
+
+.modal_vendor img, .modal_date  img {
+    height: 30px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.modal_condition img {
+    height: 40px;
+    margin-right: 10px;
+}

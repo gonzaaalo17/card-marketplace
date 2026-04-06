@@ -14,10 +14,12 @@
         <!-- CSS -->
         <link rel="stylesheet" href="CSS/home.css">
         <link rel="stylesheet" href="CSS/modal.css">
+        <link rel="stylesheet" href="CSS/modal-card.css">
         
         <!-- JS -->
         <script src="JS/modal.js" defer></script>
         <script src="JS/validate_fields.js" defer></script>
+        <script src="JS/home.js" defer></script>
     </head>
 
     <body>
@@ -58,16 +60,16 @@
                     </div>
                     <div class="categories">
                         <!--  Each of thes buttons goes to search page and activates category filter -->
-                        <button class="category">
+                        <button class="category" data-category="pokemon">
                             <img src="images/design/pokemon_trading_card_game_logo.png" alt="Pokemon logo">
                         </button>
-                        <button class="category">
+                        <button class="category" data-category="ygo">
                             <img src="images/design/Yu-Gi-Oh-Logo.png" alt="YGO logo">
                         </button>
-                        <button class="category">
+                        <button class="category" data-category="mgt">
                             <img src="images/design/Magic-The-Gathering-Logo.png" alt="MTG logo">
                         </button>
-                        <button id="category-football">
+                        <button id="category-football" data-category="sports">
                             <img src="images/design/football.png" alt="Sports logo">
                             Sports
                         </button>
@@ -78,21 +80,7 @@
                     <!--  These are place holders, should show last 3 added actually -->
                     <!--  Images should be aligned -->
                     <h2>Check out our latest arrivals</h2>
-                    <div class="latest_list">
-                        <!--  Buttons should take to each cards preview page -->
-                        <div class="latest_item">
-                            <a href="card.html"><img src="images/steve.jpg"  alt="Trading card"></a>
-                            <button class="viewmore" type="button">View More</button>
-                        </div>
-                        <div class="latest_item">
-                            <a href="card.html"><img src="images/dragon.jpg"  alt="Trading card"></a>
-                            <button class="viewmore" type="button">View More</button>
-                        </div>
-                        <div class="latest_item">
-                            <a href="card.html"><img src="images/lucas.jpg"  alt="Trading card"></a>
-                            <button class="viewmore" type="button">View More</button>
-                        </div>
-                    </div>
+                    <div class="latest_list"></div>
                 </section>
 
                 <section class="topvendors">
@@ -102,51 +90,8 @@
                     <div class="carousel">
                         <!-- Left Button -->
                         <button id="left"></button>
-                            <!-- List Container -->
-                        <div id="carousel_list" class="carousel_list">
-                            <!-- Items (Placeholders) should link to card preview page -->
-                            <!-- Data should be fetched from DB -->
-                            <a class="carousel_item" href="card.html">
-                                <img src="images/hydra.jpg" alt="Trading card">
-                                <p>$56,75</p>
-                            </a>
-
-                            <a class="carousel_item" href="card.html">
-                                <img src="images/camella.jpg" alt="Trading card">
-                                <p>$56,75</p>
-                            </a>
-
-                            <a class="carousel_item" href="card.html">
-                                <img src="images/chorizo.jpg" alt="Trading card">
-                                <p>$56,75</p>
-                            </a>
-
-                            <a class="carousel_item" href="card.html">
-                                <img src="images/faraon.jpg" alt="Trading card">
-                                <p>$56,75</p>
-                            </a>
-
-                            <a class="carousel_item" href="card.html">
-                                <img src="images/random_dragon.jpg" alt="Trading card">
-                                <p>$56,75</p>
-                            </a>
-
-                            <a class="carousel_item" href="card.html">
-                                <img src="images/messi-balon-de-oro.jpg" alt="Trading card">
-                                <p>$56,75</p>
-                            </a>
-
-                            <a class="carousel_item" href="card.html">
-                                <img src="images/zoroark.png" alt="Trading card">
-                                <p>$56,75</p>
-                            </a>
-
-                            <a class="carousel_item" href="card.html">
-                                <img src="images/kobe.jpg" alt="Trading card">
-                                <p>$56,75</p>
-                            </a>
-
-                        </div>
+                        <!-- List Container -->
+                        <div id="carousel_list" class="carousel_list"></div>
                         <!-- Right Button -->
                         <button id="right"></button>
                     </div>
@@ -252,4 +197,21 @@
                 </form>
             </div>            
         </div>
+
+        <div class="modal_card hidden">
+            <div class="modal_card_container">
+                <span id="close-card" class="close_card">&times;</span>
+
+                <div class="modal_card_hero">
+                    <img src="images/design/CardHeaven_notext.png" alt="Login/Register page logo">
+                    <h1>Card preview</h1>
+                </div>
+
+                <section class="modal_card_view"> 
+                    <!--  All data appearing here are placeholders, real data would need to be fetched from DB -->
+         
+                </section>
+            </div>            
+        </div>
+
     </body>

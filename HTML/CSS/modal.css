@@ -1,6 +1,6 @@
 /* OCULTO */
 .hidden {
-    display: none;
+    display: none !important;
     pointer-events: none;
 }
 
@@ -173,4 +173,17 @@
     height: auto;
     width: auto;
     max-height: 20px;
+}
+
+/*Animations*/
+.modal_submit,
+.modal_google,
+.modal_apple {
+    transition: transform 0.2s ease;
+}
+
+.modal_submit:hover,
+.modal_google:hover,
+.modal_apple:hover {
+    transform: scale(1.05);
 }

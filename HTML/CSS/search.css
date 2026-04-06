@@ -14,6 +14,29 @@ body {
     color: #3B3B3F;
 }
 
+.page a,
+#login,
+#signup,
+#search_button,
+.category,
+.viewmore,
+.card_image,
+.pagination button {
+    transition: transform 0.2s ease;
+}
+
+.page a:hover,
+#login:hover,
+#signup:hover,
+#search_button:hover,
+.category:hover,
+.viewmore:hover,
+.card_image:hover,
+.pagination button:hover {
+    transform: scale(1.08);
+    cursor: pointer;
+}
+
 .body_container {
     background-image: url("../images/design/background.png");
     background-size: 100%;
@@ -217,14 +240,21 @@ nav {
     margin: 5px 0;
     border-radius: 20px;
     border: 1px solid #B2B3B6;
-    background: white;
+    background-color: white;
     padding: 10px;
     text-align: left;
+}
+
+.filter-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
 }
 
 .filter-btn img {
     height: 30px;
     margin-right: 5px;
+    pointer-events: none;
 }
 
 /* radio */
@@ -300,6 +330,17 @@ nav {
 
     margin-bottom: 20px;
     padding: 20px;
+
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* info */

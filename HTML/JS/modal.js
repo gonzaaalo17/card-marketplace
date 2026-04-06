@@ -6,8 +6,8 @@ function open_reg_modal(){
 
 function close_reg_modal() {
     document.getElementById("overlay").classList.add("hidden");
-    document.getElementById("modal-register").classList.add("hidden");
     document.getElementById("modal-register").classList.remove("show");
+    document.getElementById("modal-register").classList.add("hidden");
 }
 
 function open_log_modal(){
@@ -18,8 +18,8 @@ function open_log_modal(){
 
 function close_log_modal() {
     document.getElementById("overlay").classList.add("hidden");
-    document.getElementById("modal-login").classList.add("hidden");
     document.getElementById("modal-login").classList.remove("show");
+    document.getElementById("modal-login").classList.add("hidden");
 }
 
 function ny_an_account() {

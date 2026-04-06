@@ -16,6 +16,11 @@ const login_label = document.getElementById("error_login");
 const login_form = document.getElementById("login-form");
 const login_submit = document.getElementById("submit-login");
 
+// Google
+let google_buttons = document.getElementsByClassName("modal_google")
+
+//Apple
+let apple_buttons = document.getElementsByClassName("modal_apple")
 
 //For Signup
 function show_error(label) {
@@ -97,13 +102,28 @@ function validate_register_fields(labels) {
     return valid
 }
 
-function send_signup_form(event, labels) {
+async function send_signup_form(event, labels) {
     event.preventDefault(); // Previene que no se envie por defecto
     if (validate_register_fields(labels)) {
         console.log("Signup form sent successfully. ✅");
-        register_form.submit();
+        const data = {
+            name: document.getElementById('name_ip').value,
+            lastname: document.getElementById('lastname_ip').value,
+            username: document.getElementById('user_ip').value,
+            email: document.getElementById('email_ip').value,
+            password: document.getElementById('pass_ip').value
+        };
+
+        const res = await fetch('/api/auth/signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        console.log(await res.json());
     } else {
         console.log("Signup form was not sent. ❌");
+        return
     }
 }
 
@@ -113,15 +133,41 @@ function validate_login_fields(label) {
     return false;
 }
 
-function send_login_form(event, label) {
+async function send_login_form(event, label) {
     event.preventDefault(); // Previene que no se envie por defecto
-    if (validate_login_fields(label)) {
-        console.log("Login form sent successfully. ✅");
-        login_form.submit();
+    const data = {
+        username: document.getElementById('log_user_ip').value,
+        password: document.getElementById('log_pass_ip').value
+    };
+
+    const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+
+    if (result.token) {
+        localStorage.setItem("token", result.token);
+        console.log("Logged in ✅");
     } else {
-        console.log("Login form was not sent. ❌");
+        show_error(label);
     }
 }
 
 signup_submit.addEventListener("click", (event) => send_signup_form(event, register_labels));
 login_submit.addEventListener("click", (event) => send_login_form(event, login_label))
+
+// Event for google and apple
+google_buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        window.location.href = "/oauth2/authorization/google";
+    });
+});
+
+apple_buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        window.location.href = "/oauth2/authorization/google";
+    });
+});

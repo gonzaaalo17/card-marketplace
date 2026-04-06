@@ -1,12 +1,7 @@
-/* GENERAL */
+/* ================= GENERAL ================= */
 body {
     display: grid;
-    grid-template-rows:
-        auto   /* header */
-        auto   /* hero */
-        auto   /* content */
-        auto;  /* footer */
-
+    grid-template-rows: auto auto auto auto;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -25,13 +20,32 @@ main {
     margin-bottom: 200px;
 }
 
-/* HEADER (igual que home) */
+/* ================= GLOBAL HOVER ================= */
+a, button {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+a:hover,
+button:hover {
+    transform: scale(1.08);
+}
+
+/* SOLO para imágenes dentro de links */
+a img {
+    transition: transform 0.3s ease;
+}
+
+a:hover img {
+    transform: scale(1.08);
+}
+
+/* ================= HEADER ================= */
 .header-container {
     display: grid;
     grid-template-columns: auto auto;
     width: 100%;
-    margin-top: 30px;
-    margin-bottom: 90px;
+    margin: 30px 0 90px 0;
 }
 
 nav {
@@ -49,8 +63,13 @@ nav {
 .page a {
     margin-right: 40px;
     font-size: 18px;
-    color: #3B3B3F;
     text-decoration: none;
+    color: #3B3B3F;
+}
+
+/* ❗ IMPORTANTE: NO usar font-size en hover */
+.page a:hover {
+    transform: scale(1.2);
 }
 
 #account {
@@ -59,13 +78,11 @@ nav {
 }
 
 #login, #signup {
-    font-family: 'Montserrat';
     font-size: 16px;
     font-weight: 600;
     border-radius: 50px;
     height: 40px;
     width: 150px;
-    margin-left: 10px;
 }
 
 #login {
@@ -75,43 +92,34 @@ nav {
 }
 
 #signup {
-    background-color: transparent;
+    background: transparent;
     color: #B2B3B6;
     border: 2px solid #B2B3B6;
 }
 
-/* HERO SEARCH */
-
-#logo_home img{
+/* ================= HERO ================= */
+#logo_home img {
     height: 330px;
-    width: auto;
 }
 
 .hero {
     display: grid;
-    grid-template-rows: auto auto auto;
+    gap: 20px;
     justify-items: center;
     margin-bottom: 60px;
 }
 
 .hero h1 {
     font-size: 40px;
-    font-weight: 600;
     color: #7CBFFC;
-    text-shadow:
-        0 0 5px #fff,
-        0 0 10px #fff,
-        0 0 20px #fff;
 }
 
-/* SEARCH BAR */
+/* ================= SEARCH ================= */
 .search-container {
     display: flex;
     border-radius: 50px;
     border: 2px solid #B2B3B6;
     background: white;
-    overflow: hidden;
-    margin: 20px 0 40px 0;
 }
 
 #search_bar {
@@ -119,12 +127,10 @@ nav {
     outline: none;
     height: 50px;
     width: 700px;
-    margin-left: 10px;
-    font-size: 16px;
+    padding-left: 10px;
 }
 
 #search_button {
-    margin-left: 20px;
     background-image: url("../images/design/magnifying-glass-3.png");
     background-size: 30px;
     background-repeat: no-repeat;
@@ -134,7 +140,7 @@ nav {
     background-color: transparent;
 }
 
-/* CATEGORIES */
+/* ================= CATEGORIES ================= */
 .categories {
     display: flex;
     align-items: center;
@@ -144,25 +150,22 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-image: url("../images/design/button.png");
     background-size: 200px 65px;
-    background-repeat: no-repeat;
     border: none;
-    background-color: transparent;
-
     height: 65px;
     width: 200px;
     margin-left: 25px;
 }
 
-.category img {
-    width: 100px;
+/* hover directo */
+.category:hover,
+#category-football:hover {
+    transform: scale(1.08);
 }
 
-#category-football {
-    font-weight: bold;
-    font-size: 18px;
+.category img {
+    width: 100px;
 }
 
 #category-football img {
@@ -170,116 +173,91 @@ nav {
     margin-right: 10px;
 }
 
-
-/* latest */
+/* ================= LATEST ================= */
 .latest {
     margin-top: 250px;
-    display:grid;
-    justify-items:center;
-    text-align:center;
-}
-
-.latest h2 {
-    color: #3B3B3F;
-    font-weight: 600;
-    font-size: clamp(20px, 3vw, 30px); /* FIX */
+    display: grid;
+    justify-items: center;
 }
 
 .latest_list {
     display: flex;
-    justify-content: center;
     gap: 30px;
-    width: 100%; /* FIX */
     max-width: 1200px;
 }
 
-.latest_item { 
-    display:grid;
-    grid-template-rows:auto auto;
-    justify-items:center;
+.latest_item {
+    display: grid;
+    justify-items: center;
 }
 
 .latest_item img {
     border-radius: 10px;
-    height: auto;
     max-height: 400px;
+    transition: transform 0.3s ease;
+}
+
+.latest_item img:hover {
+    transform: scale(1.08);
 }
 
 .viewmore {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-top: 20px;
     background-image: url("../images/design/button.png");
     background-size: 170px 40px;
-    background-repeat: no-repeat;
-    background-color: transparent;
     border: none;
     height: 40px;
     width: 170px;
-    margin-top: 20px;
     font-weight: bold;
-    font-size: 18px;
-    color: #3B3B3F;
 }
 
-/* topvendors */
+/* ================= CAROUSEL ================= */
 .topvendors {
     margin-top: 500px;
     display: grid;
-    grid-template-rows: auto auto;
-    justify-items:center;
-    text-align:center;
-}
-
-.topvendors h3 {
-    color: #3B3B3F;
-    font-weight: 600;
-    font-size: clamp(18px, 3vw, 25px); /* FIX */
+    justify-items: center;
 }
 
 .carousel {
     display: flex;
-    justify-content: center;
     align-items: center;
-    max-width: 100%; /* FIX */
-    overflow: hidden; /* FIX */
+    overflow: hidden;
 }
 
 .carousel_list {
     display: flex;
-    overflow-x: auto; /* FIX */
+    gap: 20px;
 }
 
+/* ❗ CLAVE: NO usar transform aquí base */
 .carousel_item {
-    margin: 10px;
+    width: 260px;
     text-decoration: none;
-    flex: 0 0 auto; /* FIX */
+    transition: transform 0.3s ease;
+}
+
+.carousel_item:hover {
+    transform: scale(1.08);
 }
 
 .carousel_item img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
     border-radius: 10px;
-    max-width: 180px; /* FIX */
-    max-height: 200px;
 }
 
 .carousel_item p {
     font-weight: 600;
-    font-size: 20px;
     color: #7CBFFC;
-    text-shadow: 
-        0 0 5px #fff,
-        0 0 10px #fff,
-        0 0 15px #fff,
-        0 0 20px #fff;
 }
 
-/* buttons */
+/* ================= ARROWS ================= */
 #right, #left {
-    height: 80px; /* ligeramente más adaptable */
     width: 80px;
-    background-color: transparent;
+    height: 80px;
+    background-size: contain;
     background-repeat: no-repeat;
-    background-size: contain; /* FIX */
     border: none;
 }
 
@@ -291,12 +269,9 @@ nav {
     background-image: url("../images/design/left-button.png");
 }
 
-/* footer */
+/* ================= FOOTER ================= */
 footer {
     background-color: white;
     color: #B5B6BA;
-    font-family: 'Montserrat';
     font-size: 15px;
-    font-weight: 200;
-    width: 100%; /* FIX */
 }
