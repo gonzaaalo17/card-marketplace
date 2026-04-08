@@ -58,12 +58,17 @@ async function fetchCardById(id) {
 }
 
 // RENDER MODAL
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString();
+}
+
 function getConditionHTML(condition) {
     switch (condition) {
         case "mint":
             return `<img src="images/design/mint.png" alt="Condition Icon">Mint`;
         case "near-mint":
-            return `<img src="images/design/near-mint.png" alt="Condition Icon">Near Mint`;
+            return `<img src="images/design/near_mint.png" alt="Condition Icon">Near Mint`;
         case "played":
             return `<img src="images/design/played.png" alt="Condition Icon">Played`;
         case "damaged":
@@ -88,7 +93,7 @@ function renderCardModal(card) {
             </div>
             <div class="modal_date">
                 <img src="images/design/calendar.png" alt="Calendar Icon">
-                ${card.date}
+                ${formatDate(card.date)}
             </div>
             <h3>Condition</h3>
             <div class="modal_condition">
@@ -181,7 +186,7 @@ renderLatest();
 
 let carouselBuffer = [];
 let currentStartIndex = 0;
-const VISIBLE_COUNT = 10;
+const VISIBLE_COUNT = 6;
 
 // INIT CAROUSEL DATA
 async function fetchInitialCarousel() {
@@ -219,7 +224,7 @@ function renderCarousel() {
 
         a.innerHTML = `
             <img src="${card.image}">
-            <p>$${card.price}</p>
+            <button class="viewmore">View More</button>
         `;
 
         a.addEventListener("click", (e) => {

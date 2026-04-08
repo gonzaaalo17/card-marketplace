@@ -14,25 +14,31 @@ body {
     color: #3B3B3F;
 }
 
-.page a,
+/* Global Hover*/
+
+.page,
 #login,
 #signup,
 #search_button,
 .category,
 .viewmore,
 .card_image,
-.pagination button {
+.pagination button,
+.filters button,
+.sort {
     transition: transform 0.2s ease;
 }
 
-.page a:hover,
+.page:hover,
 #login:hover,
 #signup:hover,
 #search_button:hover,
 .category:hover,
 .viewmore:hover,
 .card_image:hover,
-.pagination button:hover {
+.pagination button:hover,
+.filters button:hover,
+.sort:hover {
     transform: scale(1.08);
     cursor: pointer;
 }
@@ -76,6 +82,7 @@ nav {
     text-decoration: none;
 }
 
+
 #account {
     justify-self: end;
     margin-right: 40px;
@@ -118,6 +125,7 @@ nav {
 }
 
 .hero_search h1 {
+    font-family: 'Montserrat';
     font-size: 40px;
     font-weight: 600;
     color: #7CBFFC;
@@ -138,6 +146,7 @@ nav {
 }
 
 #search_bar {
+    font-family: 'Montserrat';
     border: none;
     outline: none;
     height: 50px;
@@ -184,6 +193,8 @@ nav {
 }
 
 #category-football {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
     font-weight: bold;
     font-size: 18px;
 }
@@ -215,6 +226,8 @@ nav {
 }
 
 .filters h2 {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
     margin-bottom: 20px;
 }
 
@@ -246,9 +259,9 @@ nav {
 }
 
 .filter-btn.active {
-    background-color: #007bff;
+    background-color:  #7CBFFC;;
     color: white;
-    border-color: #007bff;
+    border-color: white;
 }
 
 .filter-btn img {
@@ -279,6 +292,7 @@ nav {
 
 /* apply button */
 .apply {
+    font-family: 'Montserrat';
     margin-top: 20px;
     align-self: center;
 
@@ -309,6 +323,7 @@ nav {
 .sort {
     font-family: 'Montserrat';
     color: #3B3B3F;
+    background-color: white;
     border-radius: 20px;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -355,6 +370,8 @@ nav {
 }
 
 .card_info h2 {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
     margin: 0;
 }
 
@@ -399,6 +416,9 @@ nav {
 }
 
 .viewmore {
+        font-family: 'Montserrat';
+    color: #3B3B3F;
+    font-size: 16px;
     margin-top: 10px;
 
     background-image: url("../images/design/button.png");
@@ -432,6 +452,12 @@ nav {
 
     font-family: 'Montserrat';
     color: #B5B6BA;
+
+    box-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff;
+    
 }
 
 .pagination .active {

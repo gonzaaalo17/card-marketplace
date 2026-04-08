@@ -90,14 +90,14 @@ function validate_password_repeat(label, password, re_password) {
 function validate_register_fields(labels) {
     let valid = true;
 
-    valid = validate_names(labels[0], document.getElementById('name_ip').value) && valid;
-    valid = validate_names(labels[1], document.getElementById('lastname_ip').value) && valid;
-    valid = validate_user(labels[2], document.getElementById('user_ip').value) && valid;
-    valid = validate_email(labels[3], document.getElementById('email_ip').value) && valid;
+    valid = validate_names(labels[0], document.getElementById('sign_name_ip').value) && valid;
+    valid = validate_names(labels[1], document.getElementById('sign_lastname_ip').value) && valid;
+    valid = validate_user(labels[2], document.getElementById('sign_user_ip').value) && valid;
+    valid = validate_email(labels[3], document.getElementById('sign_email_ip').value) && valid;
 
-    let password = document.getElementById('pass_ip').value;
+    let password = document.getElementById('sign_pass_ip').value;
     valid = validate_password(labels[4], password) && valid;
-    valid = validate_password_repeat(labels[5], password, document.getElementById('repeat_pass_ip').value) && valid;
+    valid = validate_password_repeat(labels[5], password, document.getElementById('sign_repeat_pass_ip').value) && valid;
 
     return valid
 }
@@ -107,11 +107,11 @@ async function send_signup_form(event, labels) {
     if (validate_register_fields(labels)) {
         console.log("Signup form sent successfully. ✅");
         const data = {
-            name: document.getElementById('name_ip').value,
-            lastname: document.getElementById('lastname_ip').value,
-            username: document.getElementById('user_ip').value,
-            email: document.getElementById('email_ip').value,
-            password: document.getElementById('pass_ip').value
+            name: document.getElementById('sign_name_ip').value,
+            lastname: document.getElementById('sign_lastname_ip').value,
+            username: document.getElementById('sign_user_ip').value,
+            email: document.getElementById('sign_email_ip').value,
+            password: document.getElementById('sign_pass_ip').value
         };
 
         const res = await fetch('/api/auth/signup', {
@@ -120,14 +120,79 @@ async function send_signup_form(event, labels) {
             body: JSON.stringify(data)
         });
 
-        console.log(await res.json());
+        if (res.ok) {
+            console.log("Signup successful ✅");
+            show_confirmation("Signup successful");
+
+            // store data in local storage
+            localStorage.setItem("name", data.name);
+            localStorage.setItem("lastname", data.lastname);
+            localStorage.setItem("username", data.username);
+            localStorage.setItem("email", data.email);
+
+            // close modal signup
+            document.getElementById("signup-modal").classList.add("hidden");
+
+            // open modal login
+            document.getElementById("login-modal").classList.remove("hidden");
+
+            // autofill username
+            document.getElementById("log_user_ip").value = data.username;
+
+        } else {
+            console.log("Signup failed ❌");
+            show_cancel("Signup failed");
+            return
+        }
+
+
     } else {
         console.log("Signup form was not sent. ❌");
+        show_cancel("Signup form was not sent");
         return
     }
 }
 
 //For login
+async function fetch_and_store_user_data(username) {
+    try {
+        const token = localStorage.getItem("token");
+
+        const res = await fetch(`/api/user/${username}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}` // importante si usas JWT
+            }
+        });
+
+        if (!res.ok) {
+            console.log("Failed to fetch user data ❌");
+            return;
+        }
+
+        const user = await res.json();
+
+        // Solo guardar si NO existen ya
+        if (!localStorage.getItem("name")) {
+            localStorage.setItem("name", user.name);
+        }
+
+        if (!localStorage.getItem("lastname")) {
+            localStorage.setItem("lastname", user.lastname);
+        }
+
+        if (!localStorage.getItem("email")) {
+            localStorage.setItem("email", user.email);
+        }
+
+        console.log("User data stored ✅");
+
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+    }
+}
+
 function validate_login_fields(label) {
     show_error(label);
     return false;
@@ -135,24 +200,38 @@ function validate_login_fields(label) {
 
 async function send_login_form(event, label) {
     event.preventDefault(); // Previene que no se envie por defecto
-    const data = {
-        username: document.getElementById('log_user_ip').value,
-        password: document.getElementById('log_pass_ip').value
-    };
+    if (validate_login_fields(label)) {
+        const data = {
+            username: document.getElementById('log_user_ip').value,
+            password: document.getElementById('log_pass_ip').value
+        };
 
-    const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    });
+        const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
 
-    const result = await res.json();
+        const result = await res.json();
 
-    if (result.token) {
-        localStorage.setItem("token", result.token);
-        console.log("Logged in ✅");
+        if (result.token) {
+            localStorage.setItem("token", result.token);
+            
+            // Get whole user data and store it in localStorage
+            const username = document.getElementById('log_user_ip').value;
+            await fetch_and_store_user_data(username);
+
+            console.log("Logged in ✅");
+            show_confirmation("Login successful");
+            close_log_modal()
+
+        } else {
+            show_error(label);
+        }
     } else {
-        show_error(label);
+        console.log("Login form was not sent. ❌");
+        show_cancel("Login form was not sent");
+        return
     }
 }
 
@@ -160,14 +239,14 @@ signup_submit.addEventListener("click", (event) => send_signup_form(event, regis
 login_submit.addEventListener("click", (event) => send_login_form(event, login_label))
 
 // Event for google and apple
-google_buttons.forEach(btn => {
+Array.from(google_buttons).forEach(btn => {
     btn.addEventListener("click", () => {
         window.location.href = "/oauth2/authorization/google";
     });
 });
 
-apple_buttons.forEach(btn => {
+Array.from(apple_buttons).forEach(btn => {
     btn.addEventListener("click", () => {
-        window.location.href = "/oauth2/authorization/google";
+        window.location.href = "/oauth2/authorization/apple";
     });
 });

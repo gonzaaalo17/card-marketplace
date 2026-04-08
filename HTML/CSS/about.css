@@ -27,6 +27,18 @@ main {
     margin-bottom: 150px;
 }
 
+/* General hover */
+a, button {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+a:hover,
+button:hover {
+    transform: scale(1.08);
+}
+
+
 /* header */
 .header-container{
     display: grid;

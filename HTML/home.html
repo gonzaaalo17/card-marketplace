@@ -15,11 +15,15 @@
         <link rel="stylesheet" href="CSS/home.css">
         <link rel="stylesheet" href="CSS/modal.css">
         <link rel="stylesheet" href="CSS/modal-card.css">
+        <link rel="stylesheet" href="CSS/modal-confirm.css">
+        <link rel="stylesheet" href="CSS/modal-error.css">
         
         <!-- JS -->
         <script src="JS/modal.js" defer></script>
         <script src="JS/validate_fields.js" defer></script>
         <script src="JS/home.js" defer></script>
+        <script src="JS/modal-message.js" defer></script>
+        
     </head>
 
     <body>
@@ -119,33 +123,33 @@
                 <form id="register-form" class="modal_form">
                     <div class="modal_fields">
                         <div class="modal_name">
-                            <label for="name_ip">First name:</label>
-                            <input type="text" id="name_ip" name="name_ip" placeholder="Peter" required>
+                            <label for="sign_name_ip">First name:</label>
+                            <input type="text" id="sign_name_ip" name="sign_name_ip" placeholder="Peter" required>
                             <label id="error_label_name" class="error hidden" for="name_ip">First Name must be A-Z, a-z.</label>
                         </div>
                         <div class="modal_lastname">
-                            <label for="lastname_ip">Last name:</label>
-                            <input type="text" id="lastname_ip" name="lastname_ip" placeholder="Parker" required>
+                            <label for="sign_lastname_ip">Last name:</label>
+                            <input type="text" id="sign_lastname_ip" name="sign_lastname_ip" placeholder="Parker" required>
                             <label id="error_label_lastname" class="error hidden" for="lastname_ip">Last Name must be A-Z, a-z.</label>
                         </div>
                         <div class="modal_username">
-                            <label for="user_ip">Username:</label>
-                            <input type="text" id="user_ip" name="user_ip" placeholder="@peterparkerisspiderman" required>
+                            <label for="sign_user_ip">Username:</label>
+                            <input type="text" id="sign_user_ip" name="sign_user_ip" placeholder="@peterparkerisspiderman" required>
                             <label id="error_label_username" class="error hidden" for="user_ip">Username must be A-Z, a-z, numbers and '_'.</label>
                         </div>
                         <div class="modal_email">
-                            <label for="email_ip">Email:</label>
-                            <input type="email" id="email_ip" name="email_ip" placeholder="peter.parker@example.com" required>
+                            <label for="sign_email_ip">Email:</label>
+                            <input type="email" id="sign_email_ip" name="sign_email_ip" placeholder="peter.parker@example.com" required>
                             <label id="error_label_email" class="error hidden" for="email_ip">Email must be as exaple: example@example.com.</label>
                         </div>
                         <div class="modal_password">
-                            <label for="pass_ip">Password:</label>
-                            <input type="password" id="pass_ip" name="pass_ip" required>
+                            <label for="sign_pass_ip">Password:</label>
+                            <input type="password" id="sign_pass_ip" name="sign_pass_ip" required>
                             <label id="error_label_pass" class="error hidden" for="pass_ip">Password must be 8-15 characters A-Z, a-z, numbers and a special character.</label>
                         </div>
                         <div class="modal_repeat_password">
-                            <label for="repeat_pass_ip">Repeat password</label>
-                            <input type="password" id="repeat_pass_ip" name="repeat_pass_ip" required>
+                            <label for="sign_repeat_pass_ip">Repeat password</label>
+                            <input type="password" id="sign_repeat_pass_ip" name="sign_repeat_pass_ip" required>
                             <label id="error_label_repass" class="error hidden" for="repeat_pass_ip">Passwords do not match.</label>
                         </div>
                     </div>
@@ -212,6 +216,17 @@
          
                 </section>
             </div>            
+        </div>
+
+        <!-- Messages -->
+        <div id="modal-confirm" class="hidden">
+            <img src="images/design/checked.png" alt="check">
+            <p></p>
+        </div>
+
+        <div id="modal-error" class="hidden">
+            <img src="images/design/cancel.png" alt="check">
+            <p></p>
         </div>
 
     </body>

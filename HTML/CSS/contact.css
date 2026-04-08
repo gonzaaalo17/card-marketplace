@@ -27,6 +27,28 @@ main {
     margin-bottom: 150px;
 }
 
+/* General hover */
+a, button, .choose {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+a:hover,
+button:hover,
+.choose:hover {
+    transform: scale(1.08);
+}
+
+/* error labels */
+.contact_error.hidden {
+    display: none;
+}
+
+.contact_error {
+    color: red;
+    font-size: 10px;
+}
+
 /* header */
 .header-container{
     display: grid;

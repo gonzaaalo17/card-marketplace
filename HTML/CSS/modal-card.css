@@ -110,7 +110,11 @@
     width: 200px;
     margin-top: 15px;
     margin-bottom: 30px;
+    transition: transform 0.2s ease;
+}
 
+.modal_buy:hover {
+    transform: scale(1.08);
 }
 
 .modal_info {

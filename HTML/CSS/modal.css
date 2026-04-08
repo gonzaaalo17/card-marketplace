@@ -88,6 +88,11 @@
     max-height: 100px;
 }
 
+.modal_form {
+    display: flex;
+    flex-direction: column;
+}
+
 .modal_fields div{
     display: flex;
     flex-direction: column;

@@ -10,7 +10,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="CSS/contact.css">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="CSS/contact.css">
+        <link rel="stylesheet" href="CSS/modal.css">
+        <link rel="stylesheet" href="CSS/modal-confirm.css">
+        <link rel="stylesheet" href="CSS/modal-error.css">
+
+        <!-- JS -->
+        <script src="JS/modal.js" defer></script>
+        <script src="JS/validate_fields.js" defer></script>
+        <script src="JS/modal-message.js" defer></script>
+        <script src="JS/contact.js"></script>
+
     </head>
     <body>
         <div class="body_container">
@@ -28,8 +40,8 @@
                     </nav>
                     <div id="account">
                         <!--  These go on right hand side of page, same height as nav -->
-                        <a href="login.html"><button id="login" type="button">Log In</button></a>
-                        <a href="register.html"><button id="signup" type="button">Sign Up</button></a>
+                        <button id="login" type="button">Log In</button>
+                        <button id="signup" type="button">Sign Up</button>
                     </div>
                 </div>
             </header>
@@ -52,27 +64,32 @@
                                 <div class="name">
                                     <label for="name_ip">First name:</label>
                                     <input type="text" id="name_ip" name="name_ip" placeholder="Peter" required>
+                                    <label id="contact_error_name" class="contact_error hidden" for="name_ip">First Name must be A-Z, a-z.</label>
                                 </div>
                                 <div class="lastname">
                                     <label for="lastname_ip">Last name:</label>
                                     <input type="text" id="lastname_ip" name="lastname_ip" placeholder="Parker" required>
+                                    <label id="contact_error_lastname" class="contact_error hidden" for="lastname_ip">Last Name must be A-Z, a-z.</label>
                                 </div>
                                 <div class="email">
                                     <label for="email_ip">Email:</label>
-                                    <input type="text" id="email_ip" name="email_ip" placeholder="peter.parker@hotmail.com" required>
+                                    <input type="email" id="email_ip" name="email_ip" placeholder="peter.parker@hotmail.com" required>
+                                    <label id="contact_error_email" class="contact_error hidden" for="email_ip">Email must be as exaple: example@example.com.</label>
                                 </div>
                                 <div class="subject">
                                     <label for="subject_ip">Subject:</label>
-                                    <input type="text" id="subject_ip" name="subject_ip" placeholder="Peter Parker" required>
+                                    <input type="text" id="subject_ip" name="subject_ip" placeholder="Peter Parker is Spiderman" required>
+                                    <label id="contact_error_subject" class="contact_error hidden" for="email_ip">Subject is mandatory.</label>
                                 </div>
                                 <div class="message">
                                     <label for="message_ip">Message:</label>
                                     <textarea id="message_ip" name="message_ip" placeholder="Describe your issue..."></textarea>
                                 </div>
                             </div>
+
                             <div class="buttons">
                                 <button class="submit" type="button">Submit</button>
-                                <input type="file" class="choose" name="choose">
+                                <input type="file" id="choose_ip" class="choose" name="choose">
                             </div>
                         </form>
                     </div>            
@@ -83,4 +100,109 @@
         <footer>
             <p><b>Copyleft CC-by 2025 by Gonzalo Lopez</b></p>
         </footer>
+
+        <!-- Modal Register -->
+        <div id="overlay" class="hidden"></div>
+
+        <div id="modal-register" class="modal hidden">
+            <div class="modal_container">
+                <span id="close-register" class="close">&times;</span>
+
+                <div class="modal_hero">
+                    <img src="images/design/CardHeaven_notext.png" alt="Login/Register page logo">
+                    <h1>Create an account!</h1>
+                </div>
+
+                <form id="register-form" class="modal_form">
+                    <div class="modal_fields">
+                        <div class="modal_name">
+                            <label for="sign_name_ip">First name:</label>
+                            <input type="text" id="sign_name_ip" name="sign_name_ip" placeholder="Peter" required>
+                            <label id="error_label_name" class="error hidden" for="name_ip">First Name must be A-Z, a-z.</label>
+                        </div>
+                        <div class="modal_lastname">
+                            <label for="sign_lastname_ip">Last name:</label>
+                            <input type="text" id="sign_lastname_ip" name="sign_lastname_ip" placeholder="Parker" required>
+                            <label id="error_label_lastname" class="error hidden" for="lastname_ip">Last Name must be A-Z, a-z.</label>
+                        </div>
+                        <div class="modal_username">
+                            <label for="sign_user_ip">Username:</label>
+                            <input type="text" id="sign_user_ip" name="sign_user_ip" placeholder="@peterparkerisspiderman" required>
+                            <label id="error_label_username" class="error hidden" for="user_ip">Username must be A-Z, a-z, numbers and '_'.</label>
+                        </div>
+                        <div class="modal_email">
+                            <label for="sign_email_ip">Email:</label>
+                            <input type="email" id="sign_email_ip" name="sign_email_ip" placeholder="peter.parker@example.com" required>
+                            <label id="error_label_email" class="error hidden" for="email_ip">Email must be as exaple: example@example.com.</label>
+                        </div>
+                        <div class="modal_password">
+                            <label for="sign_pass_ip">Password:</label>
+                            <input type="password" id="sign_pass_ip" name="sign_pass_ip" required>
+                            <label id="error_label_pass" class="error hidden" for="pass_ip">Password must be 8-15 characters A-Z, a-z, numbers and a special character.</label>
+                        </div>
+                        <div class="modal_repeat_password">
+                            <label for="sign_repeat_pass_ip">Repeat password</label>
+                            <input type="password" id="sign_repeat_pass_ip" name="sign_repeat_pass_ip" required>
+                            <label id="error_label_repass" class="error hidden" for="repeat_pass_ip">Passwords do not match.</label>
+                        </div>
+                    </div>
+                    <div class="modal_buttons">
+                        <button id="submit-signup" class="modal_submit" type="submit">Submit</button>
+                        <button class= "modal_google" type="button">
+                            <img src="images/design/google.png" alt="google">Continue with Google
+                        </button>
+                        <button class="modal_apple" type="button">
+                            <img src="images/design/apple.png" alt="apple">Continue with Apple
+                        </button>
+                    </div>
+                </form>
+            </div>            
+        </div>
+
+        <!-- Login -->
+        <div id="modal-login" class="modal hidden">
+            <div class="modal_container">
+                <span id="close-login" class="close">&times;</span>
+
+                <div class="modal_hero">
+                    <img src="images/design/CardHeaven_notext.png" alt="Login/Register page logo">
+                    <h1>Log in with your account!</h1>
+                </div>
+
+                <form id="login-form" class="modal_form">
+                    <div class="modal_fields">
+                        <div class="modal_username">
+                            <label for="log_user_ip">Username:</label>
+                            <input type="text" id="log_user_ip" name="user_ip" placeholder="@peterparkerisspiderman" required>
+                            <label id="error_login" class="error hidden" for="log_user_ip">Incorrect email or password.</label>
+                        </div>
+                        <div class="modal_password">
+                            <label for="log_pass_ip">Password:</label>
+                            <input type="password" id="log_pass_ip" name="log_pass_ip" required>
+                        </div>
+                        <p id="modal_ny_an_account">Not yet an account? Register now</p>
+                    </div>
+                    <div class="modal_buttons">
+                        <button id="submit-login" class="modal_submit" type="submit">Submit</button>
+                        <button class= "modal_google" type="button">
+                            <img src="images/design/google.png" alt="google">Continue with Google
+                        </button>
+                        <button class="modal_apple" type="button">
+                            <img src="images/design/apple.png" alt="apple">Continue with Apple
+                        </button>
+                    </div>
+                </form>
+            </div>            
+        </div>
+
+        <!-- Messages -->
+        <div id="modal-confirm" class="hidden">
+            <img src="images/design/checked.png" alt="check">
+            <p></p>
+        </div>
+
+        <div id="modal-error" class="hidden">
+            <img src="images/design/cancel.png" alt="check">
+            <p></p>
+        </div>
     </body>

@@ -1,34 +1,31 @@
+/* ========================
+   GLOBAL
+======================== */
 body {
-    /*Grid*/
-    display:grid;
-    grid-template-rows:
-        auto   /* header */
-        auto   /* hero */
-        auto   /* card */
-        auto;  /* footer */
-    justify-items:stretch;
-    text-align:center;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
     margin: 0;
     padding: 0;
-    /*Text font*/
+    text-align: center;
     font-family: 'Montserrat';
     color: #3B3B3F;
 }
 
 .body_container {
-    /*Background*/
     background-image: url("../images/design/card_preview_background.png");
     background-size: 100%;
     background-repeat: no-repeat;
-    background-position:top;
+    background-position: top;
 }
 
 main {
     margin-bottom: 150px;
 }
 
-/* header */
-.header-container{
+/* ========================
+   HEADER
+======================== */
+.header-container {
     display: grid;
     grid-template-columns: auto auto;
     width: 100%;
@@ -36,7 +33,7 @@ main {
 }
 
 nav {
-    justify-self:start;
+    justify-self: start;
     margin-left: 40px;
 }
 
@@ -47,17 +44,16 @@ nav {
     padding: 0;
 }
 
-#account {
-    justify-self:end;
-    margin-right: 40px;
-}
-
 .page a {
     margin-right: 40px;
-    /*Font*/
     font-size: 18px;
     color: #3B3B3F;
     text-decoration: none;
+}
+
+#account {
+    justify-self: end;
+    margin-right: 40px;
 }
 
 #login, #signup {
@@ -71,7 +67,6 @@ nav {
 }
 
 #login {
-    outline: none;
     border: none;
     color: white;
     background-color: #7CBFFC;
@@ -79,31 +74,27 @@ nav {
 
 #signup {
     background-color: transparent;
-    outline: none;
     color: #B2B3B6;
     border: 2px solid #B2B3B6;
 }
 
-/* hero */
+/* ========================
+   HERO
+======================== */
 .hero {
-    display:grid;
-    grid-template-rows: auto auto;
-    justify-items:center;
-    text-align:center;
-
+    display: grid;
+    justify-items: center;
 }
+
 #logo_preview {
     margin-bottom: 80px;
 }
 
-#logo_preview img{
+#logo_preview img {
     height: 200px;
-    width: auto;
 }
 
-#title h1{
-    /*Font*/
-    font-family: 'Montserrat';
+#title h1 {
     font-weight: 600;
     font-size: 40px;
     color: #7CBFFC;
@@ -114,50 +105,41 @@ nav {
         0 0 20px #fff;
 }
 
-/* card */
-.card {
-    display: flex;
+/* ========================
+   CARD LAYOUT
+======================== */
+.card_container form {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-self: center;
     justify-content: center;
-}
-
-.card h2 {
-    font-size: 30px;
-}
-
-.card_container {
+    gap: 100px;
     width: 100%;
-    max-width: 1350px; 
+    max-width: 1200px;
+
     border: 6px solid white;
     border-radius: 30px;
     background-image: linear-gradient(to bottom right, #F0F8FD, transparent);
+
+    padding: 30px;
 }
 
-form {
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-items: left;
-    align-items: left;
-    width: 100%;
-    height: 100%;
-}
-
+/* ========================
+   LEFT: IMAGE
+======================== */
 .card_image {
     display: flex;
     flex-direction: column;
-    margin-left: 100px;
-    margin-top: 30px;
-    margin-bottom: 10px;
-
+    width: 100%;
 }
 
 .image_frame {
-    height: 100%;
-    max-height: 500px;
+    width: 350px;
     height: 500px;
-    width: 100%;
-    max-width: 350px;
+
     border-radius: 30px;
-    border: #B5B6BA, solid, 3px;
+    border: 3px solid #B5B6BA;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -169,86 +151,61 @@ form {
 }
 
 .choose {
-    font-family: 'Montserrat';
-    color: #B2B3B6;
-}
-
-/*
-Change button appearence for different browsers:
--webkit-file-upload-button -> Chrome, Edge, Safari
--file-selector-button -> Firefox and modern browsers
-*/
-.choose::-webkit-file-upload-button {
-    align-self: center;
-    font-size: 16px;
-    font-family: 'Montserrat';
-    outline: none;
-    border: 2px solid #B2B3B6;
-    border-radius: 50px;
-    color: #B2B3B6;
-    background-color: transparent;
-    height: 50px;
-    width: 150px;
     margin-top: 15px;
-    margin-bottom: 30px;
+    font-family: 'Montserrat';
+    color: #B2B3B6;
 }
 
+/* botones file input */
+.choose::-webkit-file-upload-button,
 .choose::file-selector-button {
-    align-self: center;
     font-size: 16px;
     font-family: 'Montserrat';
-    font-weight: 400;
-    outline: none;
     border: 2px solid #B2B3B6;
     border-radius: 50px;
     color: #B2B3B6;
     background-color: transparent;
     height: 50px;
     width: 150px;
-    margin-top: 15px;
-    margin-bottom: 30px;
+    cursor: pointer;
 }
 
-/* form */
+/* ========================
+   RIGHT: FORM INFO
+======================== */
 .info {
-    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
     text-align: left;
-    align-items: left;
-    justify-content: left;
-}
-
-.info textarea, 
-.info select,
-.info input {
-    padding: 10px 15px;
-    height: auto;
-    background-color: white;
-    border-radius: 50px;
-    border: 2px solid #B2B3B6;
-    font-family: 'Montserrat';
-} 
-
-.info textarea {
-    height: 100px; /* antes 20px */
-    border-radius: 20px;
 }
 
 .info label {
     margin-bottom: 5px;
 }
 
-.price-rarity{
-    display: flex;
-    flex-direction: row;
-    text-align: left;
+.info input,
+.info select,
+.info textarea {
+    padding: 10px 15px;
+    border-radius: 50px;
+    border: 2px solid #B2B3B6;
+    background-color: white;
+    font-family: 'Montserrat';
 }
 
-.condition-collection{
-    display: flex;
-    flex-direction: row;
-    text-align: left;
+.info textarea {
+    height: 120px;
+    border-radius: 20px;
 }
 
+/* rows */
+.price-rarity,
+.condition-collection {
+    display: flex;
+    gap: 15px;
+}
+
+/* field blocks */
 .card_name,
 .vendor,
 .price,
@@ -259,61 +216,58 @@ Change button appearence for different browsers:
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
+    min-width: 300px;
 }
 
+
+/* ========================
+   BUTTON
+======================== */
 .submit {
     align-self: center;
     font-size: 16px;
-    font-family: 'Montserrat';
     font-weight: 600;
-    outline: none;
-    border: 2px solid white;
+    border: none;
     border-radius: 50px;
     color: white;
     background-color: #7CBFFC;
     height: 50px;
     width: 200px;
-    margin-bottom: 30px;
+    margin-top: 15px;
+    cursor: pointer;
 }
 
-.card_name input, .vendor input{
-    width: 610px;
-}
-
-.info select {
-    width: 295px;
-    margin-right: 20px;
-}
-
-#condition_ip{
-    width: 330px;
-    margin-right: 20px;
-}
-
-.price input{
-    width: 295px;
-    margin-right: 20px;
-}
-
-.description textarea{
-    height: 140px;
-
-}
-
-/*footer*/
+/* ========================
+   FOOTER
+======================== */
 footer {
     background-color: white;
-    align-items: center;
     color: #B5B6BA;
-    font-family: 'Montserrat';
     font-size: 15px;
-    font-weight: 200;
     display: flex;
     justify-content: center;
-    align-items: center;
     padding: 20px 0;
 }
 
 footer p {
     margin: 0;
+}
+
+/* ========================
+   HOVER
+======================== */
+#login, #signup, .submit, .choose, .page, .image_frame {
+    transition: transform 0.2s ease;
+}
+
+#login:hover,
+#signup:hover,
+.submit:hover,
+.choose:hover,
+.page:hover{
+    transform: scale(1.08);
+}
+
+.image_frame:hover {
+    transform: scale(1.05);
 }

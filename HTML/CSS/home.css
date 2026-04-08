@@ -67,22 +67,19 @@ nav {
     color: #3B3B3F;
 }
 
-/* ❗ IMPORTANTE: NO usar font-size en hover */
-.page a:hover {
-    transform: scale(1.2);
-}
-
 #account {
     justify-self: end;
     margin-right: 40px;
 }
 
 #login, #signup {
+    font-family: 'Montserrat';
     font-size: 16px;
     font-weight: 600;
     border-radius: 50px;
     height: 40px;
     width: 150px;
+    margin-left: 10px;
 }
 
 #login {
@@ -100,18 +97,24 @@ nav {
 /* ================= HERO ================= */
 #logo_home img {
     height: 330px;
+    width: auto;
 }
 
 .hero {
     display: grid;
-    gap: 20px;
+    grid-template-rows: auto auto auto;
     justify-items: center;
     margin-bottom: 60px;
 }
 
 .hero h1 {
     font-size: 40px;
+    font-weight: 600;
     color: #7CBFFC;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff;;
 }
 
 /* ================= SEARCH ================= */
@@ -120,17 +123,22 @@ nav {
     border-radius: 50px;
     border: 2px solid #B2B3B6;
     background: white;
+    overflow: hidden;
+    margin: 20px 0 40px 0;
 }
 
 #search_bar {
+    font-family: 'Montserrat';
     border: none;
     outline: none;
     height: 50px;
     width: 700px;
-    padding-left: 10px;
+    margin-left: 10px;
+    font-size: 16px;
 }
 
 #search_button {
+    margin-left: 20px;
     background-image: url("../images/design/magnifying-glass-3.png");
     background-size: 30px;
     background-repeat: no-repeat;
@@ -150,12 +158,32 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
+
     background-image: url("../images/design/button.png");
     background-size: 200px 65px;
+    background-repeat: no-repeat;
     border: none;
+    background-color: transparent;
+
     height: 65px;
     width: 200px;
     margin-left: 25px;
+}
+
+.category img {
+    width: 100px;
+}
+
+#category-football {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#category-football img {
+    width: 40px;
+    margin-right: 10px;
 }
 
 /* hover directo */
@@ -164,20 +192,17 @@ nav {
     transform: scale(1.08);
 }
 
-.category img {
-    width: 100px;
-}
-
-#category-football img {
-    width: 40px;
-    margin-right: 10px;
-}
-
 /* ================= LATEST ================= */
 .latest {
     margin-top: 250px;
     display: grid;
     justify-items: center;
+}
+
+.latest h2 {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+    font-size: 35px;
 }
 
 .latest_list {
@@ -193,7 +218,7 @@ nav {
 
 .latest_item img {
     border-radius: 10px;
-    max-height: 400px;
+    max-height: 500px;
     transition: transform 0.3s ease;
 }
 
@@ -202,9 +227,13 @@ nav {
 }
 
 .viewmore {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+    font-size: 16px;
     margin-top: 20px;
     background-image: url("../images/design/button.png");
     background-size: 170px 40px;
+    background-color: transparent;
     border: none;
     height: 40px;
     width: 170px;
@@ -212,10 +241,17 @@ nav {
 }
 
 /* ================= CAROUSEL ================= */
+
 .topvendors {
     margin-top: 500px;
     display: grid;
     justify-items: center;
+}
+
+.topvendors h3 {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+    font-size: 30px;
 }
 
 .carousel {
@@ -229,15 +265,14 @@ nav {
     gap: 20px;
 }
 
-/* ❗ CLAVE: NO usar transform aquí base */
+
 .carousel_item {
     width: 260px;
     text-decoration: none;
-    transition: transform 0.3s ease;
 }
 
-.carousel_item:hover {
-    transform: scale(1.08);
+.carousel_item:hover img {
+    transform: scale(1.03);
 }
 
 .carousel_item img {
@@ -245,11 +280,7 @@ nav {
     height: 360px;
     object-fit: cover;
     border-radius: 10px;
-}
-
-.carousel_item p {
-    font-weight: 600;
-    color: #7CBFFC;
+    transition: transform 0.3s ease;
 }
 
 /* ================= ARROWS ================= */
@@ -258,6 +289,7 @@ nav {
     height: 80px;
     background-size: contain;
     background-repeat: no-repeat;
+    background-color: transparent;
     border: none;
 }
 
