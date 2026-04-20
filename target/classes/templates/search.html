@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Card Heaven - Search</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Gonzalo Lopez">
+    <meta name="description" content="Search cards marketplace">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/CSS/search.css">
+    <link rel="stylesheet" href="/CSS/modal.css">
+    <link rel="stylesheet" href="/CSS/modal-card.css">
+    <link rel="stylesheet" href="/CSS/modal-confirm.css">
+    <link rel="stylesheet" href="/CSS/modal-error.css">
+    
+    <!-- JS -->
+    <script src="/JS/modal.js" defer></script>
+    <script src="/JS/validate_fields.js" defer></script>
+    <script src="/JS/search.js" defer></script>
+    <script src="/JS/modal-message.js" defer></script>
+
+</head>
+
+<body>
+    <div class="body_container">
+
+        <!-- HEADER -->
+        <header>
+            <div class="header-container">
+                <nav>
+                    <ul id="nav_pages">
+                        <li class="page"><a href="/">Home</a></li>
+                        <li class="page"><a href="/search">Search</a></li>
+                        <li class="page"><a href="/card/new">Sell</a></li>
+                        <li class="page"><a href="/about">About</a></li>
+                        <li class="page"><a href="/contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div id="account">
+                    <button id="login" type="button">Log In</button>
+                    <button id="signup" type="button">Sign Up</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN -->
+        <main>
+
+            <!-- HERO / SEARCH -->
+            <section class="hero_search">
+
+                <div id="logo_home">
+                    <!--  Logo goes in the center of the page (size according to background) -->
+                    <img src="/images/design/CardHeaven_centered.png" alt="Home page logo">
+                </div>
+
+                <h1>Search For Cards</h1>
+
+                <div class="search-container">
+                    <button id="search_button" type="submit"></button>
+                    <input id="search_bar" type="search" placeholder="Search for cards...">
+                </div>
+
+                <!-- Categories -->
+                <div class="categories">
+                    <button class="category" data-category="pokemon">
+                        <img src="/images/design/pokemon_trading_card_game_logo.png" alt="pokemon">
+                    </button>
+
+                    <button class="category" data-category="ygo">
+                        <img src="/images/design/Yu-Gi-Oh-Logo.png" alt="ygo">
+                    </button>
+
+                    <button class="category" data-category="mgt">
+                        <img src="/images/design/Magic-The-Gathering-Logo.png" alt="mgt">
+                    </button>
+
+                    <button class="category" id="category-football" data-category="sports">
+                        <img src="/images/design/football.png" alt="sports">
+                        Sports
+                    </button>
+                </div>
+
+            </section>
+
+            <!-- CONTENT -->
+            <section class="search_content">
+
+                <!-- FILTERS -->
+                <aside class="filters">
+
+                    <h2>Filters:</h2>
+
+                    <label>Search by name:</label>
+                    <input id="filter_name" type="text">
+
+                    <label>Vendor:</label>
+                    <input id="filter_vendor" type="text">
+
+                    <label>Trading card game:</label>
+                    <button class="filter-btn" data-type="game" data-value="Pokémon">
+                        <img src="/images/design/pokeball.png" alt="pokemon_symbol">Pokémon
+                    </button>
+                    <button class="filter-btn" data-type="game" data-value="Yu-Gi-Oh!">
+                        <img src="/images/design/bakura.png" alt="yugioh_symbol">Yu-Gi-Oh!
+                    </button>
+                    <button class="filter-btn" data-type="game" data-value="Magic The Gathering">
+                        <img src="/images/design/MTG_symbol.png" alt="MTG_symbol">Magic The Gathering
+                    </button>
+                    <button class="filter-btn" data-type="game" data-value="Sports">
+                        <img src="/images/design/football.png" alt="football">Sports
+                    </button>
+                    <button class="filter-btn" data-type="game" data-value="Other">Other...</button>
+
+
+                    <label>Card condition:</label>
+                    <button class="filter-btn" data-type="condition" data-value="Mint">
+                        <img src="/images/design/mint.png" alt="mint">Mint
+                    </button>
+                    <button class="filter-btn" data-type="condition" data-value="Near-Mint">
+                        <img src="/images/design/near_mint.png" alt="near_mint">Near-mint
+                    </button>
+                    <button class="filter-btn" data-type="condition" data-value="Played">
+                        <img src="/images/design/played.png" alt="played">Played
+                    </button>
+                    <button class="filter-btn" data-type="condition" data-value="Damaged">
+                        <img src="/images/design/damaged.png" alt="damaged">Damaged
+                    </button>
+
+                    <label>Rarity level:</label>
+                    <div class="radio-group">
+                        <label>
+                        <input type="radio" name="rarity" value="Common"> Common
+                        </label>
+
+                        <label>
+                        <input type="radio" name="rarity" value="Uncommon"> Uncommon
+                        </label>
+
+                        <label>
+                        <input type="radio" name="rarity" value="Rare"> Rare
+                        </label>
+
+                        <label>
+                        <input type="radio" name="rarity" value="Ultra Rare"> Ultra Rare
+                        </label>
+                    </div>
+
+                    <label>Date of announcement:</label>
+                    <input class="date" type="date">
+
+                    <button class="apply">Apply</button>
+
+                </aside>
+
+                <!-- RESULTS -->
+                <div class="results">
+                    <div class="results_header">
+                        <p></p>
+                        <select class="sort">
+                            <option value="">Sort By</option>
+                            <option value="price">Price</option>
+                            <option value="date">Date</option>
+                            <option value="rarity">Rarity</option>
+                        </select>
+                    </div>
+
+                    <div id="cards_container"></div>
+                    <div class="pagination"></div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><b>Copyleft CC-by 2025 by Gonzalo Lopez</b></p>
+    </footer>
+
+    <!-- Modal Register -->
+    <div id="overlay" class="hidden"></div>
+
+    <div id="modal-register" class="modal hidden">
+        <div class="modal_container">
+            <span id="close-register" class="close">&times;</span>
+
+            <div class="modal_hero">
+                <img src="/images/design/CardHeaven_notext.png" alt="Login/Register page logo">
+                <h1>Create an account!</h1>
+            </div>
+
+            <form id="register-form" class="modal_form">
+                <div class="modal_fields">
+                    <div class="modal_name">
+                        <label for="sign_name_ip">First name:</label>
+                        <input type="text" id="sign_name_ip" name="sign_name_ip" placeholder="Peter" required>
+                        <label id="error_label_name" class="error hidden" for="sign_name_ip">First Name must be A-Z, a-z.</label>
+                    </div>
+                    <div class="modal_lastname">
+                        <label for="sign_lastname_ip">Last name:</label>
+                        <input type="text" id="sign_lastname_ip" name="sign_lastname_ip" placeholder="Parker" required>
+                        <label id="error_label_lastname" class="error hidden" for="sign_lastname_ip">Last Name must be A-Z, a-z.</label>
+                    </div>
+                    <div class="modal_username">
+                        <label for="sign_user_ip">Username:</label>
+                        <input type="text" id="sign_user_ip" name="sign_user_ip" placeholder="@peterparkerisspiderman" required>
+                        <label id="error_label_username" class="error hidden" for="sign_user_ip">Username must be A-Z, a-z, numbers and '_'.</label>
+                    </div>
+                    <div class="modal_email">
+                        <label for="sign_email_ip">Email:</label>
+                        <input type="email" id="sign_email_ip" name="sign_email_ip" placeholder="peter.parker@example.com" required>
+                        <label id="error_label_email" class="error hidden" for="sign_email_ip">Email must be as exaple: example@example.com.</label>
+                    </div>
+                    <div class="modal_password">
+                        <label for="sign_pass_ip">Password:</label>
+                        <input type="password" id="sign_pass_ip" name="sign_pass_ip" required>
+                        <label id="error_label_pass" class="error hidden" for="sign_pass_ip">Password must be 8-15 characters A-Z, a-z, numbers and a special character.</label>
+                    </div>
+                    <div class="modal_repeat_password">
+                        <label for="sign_repeat_pass_ip">Repeat password</label>
+                        <input type="password" id="sign_repeat_pass_ip" name="sign_repeat_pass_ip" required>
+                        <label id="error_label_repass" class="error hidden" for="sign_repeat_pass_ip">Passwords do not match.</label>
+                    </div>
+                </div>
+                <div class="modal_buttons">
+                    <button id="submit-signup" class="modal_submit" type="submit">Submit</button>
+                    <button class= "modal_google" type="button">
+                        <img src="/images/design/google.png" alt="google">Continue with Google
+                    </button>
+                    <button class="modal_apple" type="button">
+                        <img src="/images/design/apple.png" alt="apple">Continue with Apple
+                    </button>
+                </div>
+            </form>
+        </div>            
+    </div>
+
+    <!-- Login -->
+    <div id="modal-login" class="modal hidden">
+        <div class="modal_container">
+            <span id="close-login" class="close">&times;</span>
+
+            <div class="modal_hero">
+                <img src="/images/design/CardHeaven_notext.png" alt="Login/Register page logo">
+                <h1>Log in with your account!</h1>
+            </div>
+
+            <form id="login-form" class="modal_form">
+                <div class="modal_fields">
+                    <div class="modal_username">
+                        <label for="log_user_ip">Username:</label>
+                        <input type="text" id="log_user_ip" name="user_ip" placeholder="@peterparkerisspiderman" required>
+                        <label id="error_login" class="error hidden" for="log_user_ip">Incorrect email or password.</label>
+                    </div>
+                    <div class="modal_password">
+                        <label for="log_pass_ip">Password:</label>
+                        <input type="password" id="log_pass_ip" name="pass_ip" required>
+                    </div>
+                    <p id="modal_ny_an_account">Not yet an account? Register now</p>
+                </div>
+                <div class="modal_buttons">
+                    <button id="submit-login" class="modal_submit" type="submit">Submit</button>
+                    <button class= "modal_google" type="button">
+                        <img src="/images/design/google.png" alt="google">Continue with Google
+                    </button>
+                    <button class="modal_apple" type="button">
+                        <img src="/images/design/apple.png" alt="apple">Continue with Apple
+                    </button>
+                </div>
+            </form>
+        </div>  
+    </div>
+
+    <!-- Card Preview -->
+    <div class="modal_card hidden">
+        <div class="modal_card_container">
+            <span id="close-card" class="close_card">&times;</span>
+
+            <div class="modal_card_hero">
+                <img src="/images/design/CardHeaven_notext.png" alt="Login/Register page logo">
+                <h1>Card preview</h1>
+            </div>
+
+            <section class="modal_card_view"> 
+                <!--  All data appearing here are placeholders, real data would need to be fetched from DB -->
+        
+            </section>
+        </div>            
+    </div>
+
+    <!-- Messages -->
+    <div id="modal-confirm" class="hidden">
+        <img src="/images/design/checked.png" alt="check">
+        <p></p>
+    </div>
+
+    <div id="modal-error" class="hidden">
+        <img src="/images/design/cancel.png" alt="check">
+        <p></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,309 @@
+/* ================= GENERAL ================= */
+body {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+}
+
+.body_container {
+    background-image: url("../images/design/background.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+main {
+    margin-bottom: 200px;
+}
+
+/* ================= GLOBAL HOVER ================= */
+a, button {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+a:hover,
+button:hover {
+    transform: scale(1.08);
+}
+
+/* SOLO para imágenes dentro de links */
+a img {
+    transition: transform 0.3s ease;
+}
+
+a:hover img {
+    transform: scale(1.08);
+}
+
+/* ================= HEADER ================= */
+.header-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    margin: 30px 0 90px 0;
+}
+
+nav {
+    justify-self: start;
+    margin-left: 40px;
+}
+
+#nav_pages {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page a {
+    margin-right: 40px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #3B3B3F;
+}
+
+#account {
+    justify-self: end;
+    margin-right: 40px;
+}
+
+#login, #signup {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 50px;
+    height: 40px;
+    width: 150px;
+    margin-left: 10px;
+}
+
+#login {
+    border: none;
+    color: white;
+    background-color: #7CBFFC;
+}
+
+#signup {
+    background: transparent;
+    color: #B2B3B6;
+    border: 2px solid #B2B3B6;
+}
+
+/* ================= HERO ================= */
+#logo_home img {
+    height: 330px;
+    width: auto;
+}
+
+.hero {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    margin-bottom: 60px;
+}
+
+.hero h1 {
+    font-size: 40px;
+    font-weight: 600;
+    color: #7CBFFC;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff;;
+}
+
+/* ================= SEARCH ================= */
+.search-container {
+    display: flex;
+    border-radius: 50px;
+    border: 2px solid #B2B3B6;
+    background: white;
+    overflow: hidden;
+    margin: 20px 0 40px 0;
+}
+
+#search_bar {
+    font-family: 'Montserrat';
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 700px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+#search_button {
+    margin-left: 20px;
+    background-image: url("../images/design/magnifying-glass-3.png");
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    width: 40px;
+    background-color: transparent;
+}
+
+/* ================= CATEGORIES ================= */
+.categories {
+    display: flex;
+    align-items: center;
+}
+
+.category, #category-football {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url("../images/design/button.png");
+    background-size: 200px 65px;
+    background-repeat: no-repeat;
+    border: none;
+    background-color: transparent;
+
+    height: 65px;
+    width: 200px;
+    margin-left: 25px;
+}
+
+.category img {
+    width: 100px;
+}
+
+#category-football {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#category-football img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+/* hover directo */
+.category:hover,
+#category-football:hover {
+    transform: scale(1.08);
+}
+
+/* ================= LATEST ================= */
+.latest {
+    margin-top: 250px;
+    display: grid;
+    justify-items: center;
+}
+
+.latest h2 {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+    font-size: 35px;
+}
+
+.latest_list {
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+}
+
+.latest_item {
+    display: grid;
+    justify-items: center;
+}
+
+.latest_item img {
+    border-radius: 10px;
+    max-height: 500px;
+    transition: transform 0.3s ease;
+}
+
+.latest_item img:hover {
+    transform: scale(1.08);
+}
+
+.viewmore {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+    font-size: 16px;
+    margin-top: 20px;
+    background-image: url("../images/design/button.png");
+    background-size: 170px 40px;
+    background-color: transparent;
+    border: none;
+    height: 40px;
+    width: 170px;
+    font-weight: bold;
+}
+
+/* ================= CAROUSEL ================= */
+
+.topvendors {
+    margin-top: 500px;
+    display: grid;
+    justify-items: center;
+}
+
+.topvendors h3 {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+    font-size: 30px;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.carousel_list {
+    display: flex;
+    gap: 20px;
+}
+
+
+.carousel_item {
+    width: 260px;
+    text-decoration: none;
+}
+
+.carousel_item:hover img {
+    transform: scale(1.03);
+}
+
+.carousel_item img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* ================= ARROWS ================= */
+#right, #left {
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+}
+
+#right {
+    background-image: url("../images/design/right-button.png");
+}
+
+#left {
+    background-image: url("../images/design/left-button.png");
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background-color: white;
+    color: #B5B6BA;
+    font-size: 15px;
+}

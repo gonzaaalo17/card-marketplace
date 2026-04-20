@@ -1,0 +1,263 @@
+body {
+    /*Grid*/
+    display:grid;
+    grid-template-rows:
+        auto   /* header */
+        auto   /* hero */
+        auto   /* card */
+        auto;  /* footer */
+    justify-items:stretch;
+    text-align:center;
+    margin: 0;
+    padding: 0;
+    /*Text font*/
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+}
+
+.body_container {
+    /*Background*/
+    background-image: url("../images/design/card_preview_background.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position:top;
+}
+
+main {
+    margin-bottom: 150px;
+}
+
+/* General hover */
+a, button, .choose {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+a:hover,
+button:hover,
+.choose:hover {
+    transform: scale(1.08);
+}
+
+/* error labels */
+.contact_error.hidden {
+    display: none;
+}
+
+.contact_error {
+    color: red;
+    font-size: 10px;
+}
+
+/* header */
+.header-container{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    margin-top: 30px;
+}
+
+nav {
+    justify-self:start;
+    margin-left: 40px;
+}
+
+#nav_pages {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#account {
+    justify-self:end;
+    margin-right: 40px;
+}
+
+.page a {
+    margin-right: 40px;
+    /*Font*/
+    font-size: 18px;
+    color: #3B3B3F;
+    text-decoration: none;
+}
+
+#login, #signup {
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    margin-left: 10px;
+    border-radius: 50px;
+    height: 40px;
+    width: 150px;
+}
+
+#login {
+    outline: none;
+    border: none;
+    color: white;
+    background-color: #7CBFFC;
+}
+
+#signup {
+    background-color: transparent;
+    outline: none;
+    color: #B2B3B6;
+    border: 2px solid #B2B3B6;
+}
+
+/* hero */
+.hero {
+    display:grid;
+    grid-template-rows: auto auto;
+    justify-items:center;
+    text-align:center;
+
+}
+#logo_preview {
+    margin-bottom: 80px;
+}
+
+#logo_preview img{
+    height: 200px;
+    width: auto;
+}
+
+#title h1{
+    /*Font*/
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 40px;
+    color: #7CBFFC;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #fff,
+        0 0 20px #fff;
+}
+
+/* form */
+.form {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    border: 6px solid white;
+    border-radius: 30px;
+    background-image: linear-gradient(to bottom right, #F0F8FD, transparent);
+}
+
+form {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.fields div{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.fields input, textarea {
+    padding: 10px 15px;
+    height: auto;
+    background-color: white;
+    border-radius: 50px;
+    border: 2px solid #B2B3B6;
+    font-family: 'Montserrat';
+} 
+
+.fields label {
+    margin-bottom: 5px;
+}
+
+.fields input {
+    max-width: 700px;
+    width: 100%;
+}
+
+.fields textarea {
+    border-radius: 30px;
+    height: 140px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 20px;
+}
+
+.submit {
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 50px;
+    color: white;
+    background-color: #7CBFFC;
+    height: 55px;
+    width: 160px;
+}
+
+/*
+Change button appearence for different browsers:
+-webkit-file-upload-button -> Chrome, Edge, Safari
+-file-selector-button -> Firefox and modern browsers
+*/
+.choose {
+    font-family: 'Montserrat';
+    color: #B2B3B6;
+}
+
+.choose::-webkit-file-upload-button {
+    font-size: 16px;
+    font-family: 'Montserrat';
+    outline: none;
+    border: 2px solid #B2B3B6;
+    border-radius: 50px;
+    color: #B2B3B6;
+    background-color: transparent;
+    height: 50px;
+    width: 150px;
+}
+
+.choose::file-selector-button {
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    outline: none;
+    border: 2px solid #B2B3B6;
+    border-radius: 50px;
+    color: #B2B3B6;
+    background-color: transparent;
+    height: 50px;
+    width: 150px;
+}
+
+/*footer*/
+footer {
+    background-color: white;
+    align-items: center;
+    color: #B5B6BA;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    font-weight: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+footer p {
+    margin: 0;
+}

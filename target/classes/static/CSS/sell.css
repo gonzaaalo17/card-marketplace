@@ -1,0 +1,273 @@
+/* ========================
+   GLOBAL
+======================== */
+body {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+}
+
+.body_container {
+    background-image: url("../images/design/card_preview_background.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+main {
+    margin-bottom: 150px;
+}
+
+/* ========================
+   HEADER
+======================== */
+.header-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    margin-top: 30px;
+}
+
+nav {
+    justify-self: start;
+    margin-left: 40px;
+}
+
+#nav_pages {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.page a {
+    margin-right: 40px;
+    font-size: 18px;
+    color: #3B3B3F;
+    text-decoration: none;
+}
+
+#account {
+    justify-self: end;
+    margin-right: 40px;
+}
+
+#login, #signup {
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    margin-left: 10px;
+    border-radius: 50px;
+    height: 40px;
+    width: 150px;
+}
+
+#login {
+    border: none;
+    color: white;
+    background-color: #7CBFFC;
+}
+
+#signup {
+    background-color: transparent;
+    color: #B2B3B6;
+    border: 2px solid #B2B3B6;
+}
+
+/* ========================
+   HERO
+======================== */
+.hero {
+    display: grid;
+    justify-items: center;
+}
+
+#logo_preview {
+    margin-bottom: 80px;
+}
+
+#logo_preview img {
+    height: 200px;
+}
+
+#title h1 {
+    font-weight: 600;
+    font-size: 40px;
+    color: #7CBFFC;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #fff,
+        0 0 20px #fff;
+}
+
+/* ========================
+   CARD LAYOUT
+======================== */
+.card_container form {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-self: center;
+    justify-content: center;
+    gap: 100px;
+    width: 100%;
+    max-width: 1200px;
+
+    border: 6px solid white;
+    border-radius: 30px;
+    background-image: linear-gradient(to bottom right, #F0F8FD, transparent);
+
+    padding: 30px;
+}
+
+/* ========================
+   LEFT: IMAGE
+======================== */
+.card_image {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.image_frame {
+    width: 350px;
+    height: 500px;
+
+    border-radius: 30px;
+    border: 3px solid #B5B6BA;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image_frame p {
+    font-size: 25px;
+    color: #B2B3B6;
+}
+
+.choose {
+    margin-top: 15px;
+    font-family: 'Montserrat';
+    color: #B2B3B6;
+}
+
+/* botones file input */
+.choose::-webkit-file-upload-button,
+.choose::file-selector-button {
+    font-size: 16px;
+    font-family: 'Montserrat';
+    border: 2px solid #B2B3B6;
+    border-radius: 50px;
+    color: #B2B3B6;
+    background-color: transparent;
+    height: 50px;
+    width: 150px;
+    cursor: pointer;
+}
+
+/* ========================
+   RIGHT: FORM INFO
+======================== */
+.info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.info label {
+    margin-bottom: 5px;
+}
+
+.info input,
+.info select,
+.info textarea {
+    padding: 10px 15px;
+    border-radius: 50px;
+    border: 2px solid #B2B3B6;
+    background-color: white;
+    font-family: 'Montserrat';
+}
+
+.info textarea {
+    height: 120px;
+    border-radius: 20px;
+}
+
+/* rows */
+.price-rarity,
+.condition-collection {
+    display: flex;
+    gap: 15px;
+}
+
+/* field blocks */
+.card_name,
+.vendor,
+.price,
+.rarity,
+.condition,
+.collection,
+.description {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    min-width: 300px;
+}
+
+
+/* ========================
+   BUTTON
+======================== */
+.submit {
+    align-self: center;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    background-color: #7CBFFC;
+    height: 50px;
+    width: 200px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+/* ========================
+   FOOTER
+======================== */
+footer {
+    background-color: white;
+    color: #B5B6BA;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ========================
+   HOVER
+======================== */
+#login, #signup, .submit, .choose, .page, .image_frame {
+    transition: transform 0.2s ease;
+}
+
+#login:hover,
+#signup:hover,
+.submit:hover,
+.choose:hover,
+.page:hover{
+    transform: scale(1.08);
+}
+
+.image_frame:hover {
+    transform: scale(1.05);
+}
