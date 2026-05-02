@@ -114,7 +114,7 @@ async function send_signup_form(event, labels) {
             password: document.getElementById('sign_pass_ip').value
         };
 
-        const res = await fetch('/api/auth/signup', {
+        const res = await fetch('/api/auth/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -125,16 +125,18 @@ async function send_signup_form(event, labels) {
             show_confirmation("Signup successful");
 
             // store data in local storage
-            localStorage.setItem("name", data.name);
-            localStorage.setItem("lastname", data.lastname);
-            localStorage.setItem("username", data.username);
-            localStorage.setItem("email", data.email);
+            // localStorage.setItem("name", data.name);
+            // localStorage.setItem("lastname", data.lastname);
+            // localStorage.setItem("username", data.username);
+            // localStorage.setItem("email", data.email);
 
             // close modal signup
-            document.getElementById("signup-modal").classList.add("hidden");
+            // document.getElementById("signup-modal").classList.add("hidden");
+            close_reg_modal()
 
             // open modal login
-            document.getElementById("login-modal").classList.remove("hidden");
+            // document.getElementById("login-modal").classList.remove("hidden");
+            open_log_modal()
 
             // autofill username
             document.getElementById("log_user_ip").value = data.username;
@@ -154,52 +156,25 @@ async function send_signup_form(event, labels) {
 }
 
 //For login
-async function fetch_and_store_user_data(username) {
-    try {
-        const token = localStorage.getItem("token");
-
-        const res = await fetch(`/api/user/${username}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}` // importante si usas JWT
-            }
-        });
-
-        if (!res.ok) {
-            console.log("Failed to fetch user data ❌");
-            return;
-        }
-
-        const user = await res.json();
-
-        // Solo guardar si NO existen ya
-        if (!localStorage.getItem("name")) {
-            localStorage.setItem("name", user.name);
-        }
-
-        if (!localStorage.getItem("lastname")) {
-            localStorage.setItem("lastname", user.lastname);
-        }
-
-        if (!localStorage.getItem("email")) {
-            localStorage.setItem("email", user.email);
-        }
-
-        console.log("User data stored ✅");
-
-    } catch (error) {
-        console.error("Error fetching user data:", error);
-    }
-}
-
 function validate_login_fields(label) {
-    show_error(label);
-    return false;
+    const username = document.getElementById('log_user_ip').value;
+    const password = document.getElementById('log_pass_ip').value;
+
+    if (!username || !password) {
+        show_error(label);
+        console.log("Login form was not sent. ❌");
+        show_cancel("Login form was not sent");
+
+        return false;
+    }
+
+    hide_error(label);
+    return true;
 }
 
 async function send_login_form(event, label) {
     event.preventDefault(); // Previene que no se envie por defecto
+
     if (validate_login_fields(label)) {
         const data = {
             username: document.getElementById('log_user_ip').value,
@@ -212,22 +187,20 @@ async function send_login_form(event, label) {
             body: JSON.stringify(data)
         });
 
-        const result = await res.json();
-
-        if (result.token) {
-            localStorage.setItem("token", result.token);
-            
-            // Get whole user data and store it in localStorage
-            const username = document.getElementById('log_user_ip').value;
-            await fetch_and_store_user_data(username);
-
-            console.log("Logged in ✅");
-            show_confirmation("Login successful");
-            close_log_modal()
-
-        } else {
+        if (!res.ok) {
             show_error(label);
+            return;
         }
+
+        const result = await res.json();
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("username", result.user); // Stores token in localStorage so that can be retrieved from sell.js for autofill
+
+        console.log("Logged in ✅");
+
+        show_confirmation("Login successful");
+        close_log_modal();
+
     } else {
         console.log("Login form was not sent. ❌");
         show_cancel("Login form was not sent");
