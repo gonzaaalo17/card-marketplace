@@ -1,34 +1,11 @@
-// ========================
-// MOCK DATABASE
-// ========================
-const mockData = [
-    { id: 1, name: "Blue Eyes Dragon", vendor: "Gonzalo Lopez", game: "ygo", condition: "mint", rarity: "rare", price: 120, date: "2023-01-10", image: "images/dragon.jpg", description: "Selling this N’s Zoroark ex card featuring Zoroark and N. Great looking full art with the gold background. Card is in very good condition and has been kept in a sleeve. Perfect for collectors or anyone building a deck around Zoroark. Feel free to message if you want more photos or details." },
-    { id: 2, name: "Lucas Card", vendor: "Blender", game: "pokemon", condition: "near-mint", rarity: "common", price: 20, date: "2024-03-15", image: "images/lucas.jpg", description: "Selling this N’s Zoroark ex card featuring Zoroark and N. Great looking full art with the gold background. Card is in very good condition and has been kept in a sleeve. Perfect for collectors or anyone building a deck around Zoroark. Feel free to message if you want more photos or details." },
-    { id: 3, name: "Steve Promo", vendor: "Hector", game: "mgt", condition: "played", rarity: "uncommon", price: 35, date: "2022-11-01", image: "images/steve.jpg", description: "Selling this N’s Zoroark ex card featuring Zoroark and N. Great looking full art with the gold background. Card is in very good condition and has been kept in a sleeve. Perfect for collectors or anyone building a deck around Zoroark. Feel free to message if you want more photos or details." },
-    { id: 4, name: "Kobe Legend", vendor: "Erik Perry", game: "sports", condition: "mint", rarity: "rare", price: 200, date: "2023-07-22", image: "images/kobe.jpg", description: "Selling this N’s Zoroark ex card featuring Zoroark and N. Great looking full art with the gold background. Card is in very good condition and has been kept in a sleeve. Perfect for collectors or anyone building a deck around Zoroark. Feel free to message if you want more photos or details." },
-    { id: 5, name: "Chorizo Special", vendor: "RRari", game: "other", condition: "damaged", rarity: "common", price: 5, date: "2021-05-18", image: "images/chorizo.jpg", description: "Selling this N’s Zoroark ex card featuring Zoroark and N. Great looking full art with the gold background. Card is in very good condition and has been kept in a sleeve. Perfect for collectors or anyone building a deck around Zoroark. Feel free to message if you want more photos or details." },
-    { id: 6, name: "Camella Rare", vendor: "Xibi", game: "pokemon", condition: "near-mint", rarity: "rare", price: 75, date: "2023-09-09", image: "images/camella.jpg", description: "Selling this N’s Zoroark ex card featuring Zoroark and N. Great looking full art with the gold background. Card is in very good condition and has been kept in a sleeve. Perfect for collectors or anyone building a deck around Zoroark. Feel free to message if you want more photos or details." },
-    { id: 7, name: "Ray Champion", vendor: "Gonzalo Lopez", game: "sports", condition: "mint", rarity: "ultra-rare", price: 300, date: "2024-01-01", image: "images/ray.jpg", description: "Selling this N’s Zoroark ex card featuring Zoroark and N. Great looking full art with the gold background. Card is in very good condition and has been kept in a sleeve. Perfect for collectors or anyone building a deck around Zoroark. Feel free to message if you want more photos or details." },
-    { id: 8, name: "Pharaoh's Curse", vendor: "Hector", game: "ygo", condition: "played", rarity: "rare", price: 90, date: "2022-08-12", image: "images/faraon.jpg", description: "Selling this N’s Zoroark ex card featuring Zoroark and N. Great looking full art with the gold background. Card is in very good condition and has been kept in a sleeve. Perfect for collectors or anyone building a deck around Zoroark. Feel free to message if you want more photos or details." },
-    { id: 9, name: "Gyarados EX", vendor: "Store B", game: "pokemon", condition: "mint", rarity: "ultra-rare", price: 250, date: "2024-02-20", image: "images/gyara2.jpg", description: "Selling this N’s Zoroark ex card featuring Zoroark and N. Great looking full art with the gold background. Card is in very good condition and has been kept in a sleeve. Perfect for collectors or anyone building a deck around Zoroark. Feel free to message if you want more photos or details." },
-    { id: 10, name: "Hydra Beast", vendor: "RRari", game: "mgt", condition: "near-mint", rarity: "rare", price: 180, date: "2023-06-30", image: "images/hydra.jpg", description: "Selling this N’s Zoroark ex card featuring Zoroark and N. Great looking full art with the gold background. Card is in very good condition and has been kept in a sleeve. Perfect for collectors or anyone building a deck around Zoroark. Feel free to message if you want more photos or details." },
-    { id: 11, name: "Random Dragon", vendor: "Gonzalo Lopez", game: "ygo", condition: "damaged", rarity: "common", price: 10, date: "2021-12-25", image: "images/random_dragon.jpg", description: "Selling this N’s Zoroark ex card featuring Zoroark and N. Great looking full art with the gold background. Card is in very good condition and has been kept in a sleeve. Perfect for collectors or anyone building a deck around Zoroark. Feel free to message if you want more photos or details." }
-];
-
-// ========================
-// STATE
-// ========================
-const state = {
-    results: [],
-    page: 1,
-    pageSize: 4,
-    totalResults: 0,
-    filters: {}
-};
 
 // ========================
 // BUILD QUERY
 // ========================
+
+let currentPage = 1;
+const pageSize = 4;
+
 function buildQuery() {
     const params = new URLSearchParams();
 
@@ -45,8 +22,8 @@ function buildQuery() {
     // games (buttons active)
     const activeGameButtons = document.querySelectorAll(".filter-btn.active[data-type='game']");
     if (activeGameButtons.length > 0) {
-        const games = Array.from(activeGameButtons).map(btn => btn.dataset.value);
-        params.append("games", games.join(","));
+        const collections = Array.from(activeGameButtons).map(btn => btn.dataset.value);
+        params.append("collections", collections.join(","));
     }
 
     // condition
@@ -69,86 +46,44 @@ function buildQuery() {
 // FETCH + FILTER (MOCK)
 // ========================
 
-async function fetchCards() {
-    // API READY:
-    // const queryString = buildQuery();
-    // const response = await fetch(`/api/cards?${queryString}`);
-    // return await response.json();
+async function fetchCards(page) {
+    const queryString = buildQuery();
 
-    // MOCK fallback
-    return mockData;
+    const response = await fetch(
+        `/api/cards/search?page=${page - 1}&size=${pageSize}&${queryString}`
+    );
+
+    return await response.json();
 }
 
-function fetchAndRender() {
-    const queryString = buildQuery();
-    const params = new URLSearchParams(queryString);
+async function fetchAndRender(page = currentPage) {
+    const data = await fetchCards(page);
 
-    let filtered = [...mockData];
+    renderResults(data.content);
+    renderPagination(data.totalElements, page);
+    updateResultsHeader(data.totalElements);
 
-    const name = params.get("name");
-    if (name) {
-        filtered = filtered.filter(c =>
-            c.name.toLowerCase().includes(name.toLowerCase())
-        );
-    }
-
-    const vendor = params.get("vendor");
-    if (vendor) {
-        filtered = filtered.filter(c =>
-            c.vendor.toLowerCase().includes(vendor.toLowerCase())
-        );
-    }
-
-    const games = params.get("games");
-    if (games) {
-        const arr = games.split(",");
-        filtered = filtered.filter(c => arr.includes(c.game));
-    }
-
-    const conditions = params.get("conditions");
-    if (conditions) {
-        const arr = conditions.split(",");
-        filtered = filtered.filter(c => arr.includes(c.condition));
-    }
-
-    const rarity = params.get("rarity");
-    if (rarity) {
-        filtered = filtered.filter(c => c.rarity === rarity);
-    }
-
-    const sort = params.get("sort");
-
-    if (sort === "price") filtered.sort((a, b) => a.price - b.price);
-    if (sort === "date") filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
-    if (sort === "rarity") {
-        const order = ["common", "uncommon", "rare", "ultra-rare"];
-        filtered.sort((a, b) => order.indexOf(a.rarity) - order.indexOf(b.rarity));
-    }
-
-    state.totalResults = filtered.length;
-
-    const start = (state.page - 1) * state.pageSize;
-    const end = start + state.pageSize;
-
-    state.results = filtered.slice(start, end);
-
-    renderResults();
-    renderPagination();
-    updateResultsHeader();
+    currentPage = page;
 }
 
 // =======================
 // CARD MODAL
 // =======================
 
-// GET CARD FROM MOCK
+
+function formatDate(dateStr) {
+    if (!dateStr) return "Recently added";
+
+    const date = new Date(dateStr);
+    return date.toLocaleDateString();
+}
+
 async function fetchCardById(id) {
     // API READY:
-    // const response = await fetch(`/api/cards/${id}`);
-    // if (!response.ok) throw new Error("Card not found");
-    // return await response.json();
+    const response = await fetch(`/api/cards/${id}`);
+    return await response.json();
 
-    return mockData.find(card => card.id === id);
+    // return mockData.find(card => card.id === id);
 }
 
 // RENDER MODAL
@@ -160,35 +95,40 @@ function formatDate(dateStr) {
 }
 
 function getConditionHTML(condition) {
-    switch (condition) {
+    const c = condition.toLowerCase(); // Normalize condition
+
+    switch (c) {
         case "mint":
-            return `<img src="images/design/mint.png" alt="Condition Icon">Mint`;
+            return `<img src="/images/design/mint.png" alt="Condition Icon">Mint`;
         case "near-mint":
-            return `<img src="images/design/near_mint.png" alt="Condition Icon">Near Mint`;
+            return `<img src="/images/design/near_mint.png" alt="Condition Icon">Near Mint`;
         case "played":
-            return `<img src="images/design/played.png" alt="Condition Icon">Played`;
+            return `<img src="/images/design/played.png" alt="Condition Icon">Played`;
         case "damaged":
-            return `<img src="images/design/damaged.png" alt="Condition Icon">Damaged`;
+            return `<img src="/images/design/damaged.png" alt="Condition Icon">Damaged`;
     }
 }
 
 function renderCardModal(card) {
+    if (!card) return; // Protection in case backend returns null
+
     const card_container = document.querySelector(".modal_card_view")
+    const imageSrc = card.image || "/images/design/placeholder.jpg"; // Temporal until uploads impl is done
 
     card_container.innerHTML = `
         <div class="modal_card_image">
-            <img src="${card.image}"  alt="Trading card">
+            <img src="${imageSrc}"  alt="Trading card">
             <button class="modal_buy" type="button">Buy</button>
         </div>
         <div class="modal_info">
             <h2>${card.name}</h2>
             <h2 class="modal_price">$ ${card.price}</h2>
             <div class="modal_vendor">
-                <img src="images/design/user.png" alt="User Icon">
+                <img src="/images/design/user.png" alt="User Icon">
                 ${card.vendor}
             </div>
             <div class="modal_date">
-                <img src="images/design/calendar.png" alt="Calendar Icon">
+                <img src="/images/design/calendar.png" alt="Calendar Icon">
                 ${formatDate(card.date)}
             </div>
             <h3>Condition</h3>
@@ -230,13 +170,13 @@ document.getElementById("close-card").addEventListener("click", () => {
 
 function getCategoryImage(category) {
     switch (category) {
-        case "pokemon":
+        case "Pokémon":
             return "images/design/pokemon_trading_card_game_logo.png";
-        case "ygo":
+        case "Yu-Gi-Oh!":
             return "images/design/Yu-Gi-Oh-Logo.png";
-        case "mgt":
+        case "Magic The Gathering":
             return "images/design/Magic-The-Gathering-Logo.png";
-        case "sports":
+        case "Sports":
             return "images/design/football.png";
         default:
             return
@@ -253,11 +193,11 @@ function getCorrectHTML(category) {
     return `<img class="game_logo" src="${categoryImg}" alt="${category} logo">`;
 }
 
-function renderResults() {
+function renderResults(results) {
     const container = document.getElementById("cards_container");
     container.innerHTML = "";
 
-    state.results.forEach(card => {
+    results.forEach(card => {
         const cardEl = document.createElement("div");
         cardEl.classList.add("card");
 
@@ -270,7 +210,7 @@ function renderResults() {
 
                     <h2>${card.name}</h2>
                     
-                    ${getCorrectHTML(card.game)}
+                    ${getCorrectHTML(card.collection)}
 
                     <div class="meta">
 
@@ -314,21 +254,20 @@ function renderResults() {
 // ========================
 // PAGINATION
 // ========================
-function renderPagination() {
+function renderPagination(totalResults, page) {
     const container = document.querySelector(".pagination");
     container.innerHTML = "";
 
-    const totalPages = Math.ceil(state.totalResults / state.pageSize);
+    const totalPages = Math.ceil(totalResults / pageSize);
 
     for (let i = 1; i <= totalPages; i++) {
         const btn = document.createElement("button");
         btn.textContent = i;
 
-        if (i === state.page) btn.classList.add("active");
+        if (i === page) btn.classList.add("active");
 
         btn.addEventListener("click", () => {
-            state.page = i;
-            fetchAndRender();
+            fetchAndRender(i);
         });
 
         container.appendChild(btn);
@@ -338,9 +277,9 @@ function renderPagination() {
 // ========================
 // HEADER RESULTS COUNT
 // ========================
-function updateResultsHeader() {
+function updateResultsHeader(resultsCount) {
     const p = document.querySelector(".results_header p");
-    p.textContent = `${state.totalResults} results found`;
+    p.textContent = `${resultsCount} results found`;
 }
 
 // ========================
@@ -356,11 +295,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // 1. Copy to filter input
         document.getElementById("filter_name").value = searchValue;
 
-        // 2. Reset page
-        state.page = 1;
-
         // 3. Apply filters
-        fetchAndRender();
+        fetchAndRender(1);
     });
 
     document.getElementById("search_bar").addEventListener("keypress", (e) => {
@@ -371,13 +307,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Apply button
     document.querySelector(".apply").addEventListener("click", () => {
-        state.page = 1;
-        fetchAndRender();
+        fetchAndRender(1);
     });
 
     // Sort
     document.querySelector(".sort").addEventListener("change", () => {
-        fetchAndRender();
+        fetchAndRender(1);
     });
 
     // Category buttons (hero)
@@ -400,8 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // 3. Reset page + fetch
-            state.page = 1;
-            fetchAndRender();
+            fetchAndRender(1);
         });
     });
 
@@ -433,6 +367,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Initial load
-    fetchAndRender();
+    fetchAndRender(1);
 });
 

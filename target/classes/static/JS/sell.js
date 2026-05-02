@@ -145,11 +145,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const token = localStorage.getItem("token");
 
-            // if (!token) {
-            //     error_label.classList.add("hidden");
-            //     open_log_modal();
-            //     return;
-            // }
+            if (!token) {
+                error_label.classList.add("hidden");
+                open_log_modal();
+                return;
+            }
 
             const formData = getFormData(data, fileInput);
 
@@ -172,9 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             console.log("SUCCESS:", result);
             show_confirmation("Form submitted correctly.");
-
-            // Redirect to home
-            window.location.href = "/";
 
         } finally {
             submitBtn.disabled = false; // Enable button always at end of function

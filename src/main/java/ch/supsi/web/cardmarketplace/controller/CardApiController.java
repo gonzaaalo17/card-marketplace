@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/cards")
@@ -106,5 +107,22 @@ public class CardApiController {
     @GetMapping("/{id}")
     public Card getById(@PathVariable int id) {
         return cardService.getCardById(id);
+    }
+
+    // ==========================
+    // 6. Search pages
+    // ==========================
+    @GetMapping("/search")
+    public Map<String, Object> searchCards(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "4") int size,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String vendor,
+            @RequestParam(required = false) List<String> collections,
+            @RequestParam(required = false) List<String> conditions,
+            @RequestParam(required = false) String rarity,
+            @RequestParam(required = false) String sort
+    ) {
+        return cardService.searchPaged(page, size, name, vendor, collections, conditions, rarity, sort);
     }
 }

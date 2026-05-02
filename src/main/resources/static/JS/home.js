@@ -9,7 +9,7 @@ function handleSearch() {
     const query = searchInput.value.trim();
     if (!query) return;
 
-    window.location.href = `search.html?name=${encodeURIComponent(query)}`;
+    window.location.href = `/search?collection=${encodeURIComponent(category)}`;
 }
 
 searchButton.addEventListener("click", handleSearch);

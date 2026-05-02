@@ -145,11 +145,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const token = localStorage.getItem("token");
 
-            // if (!token) {
-            //     error_label.classList.add("hidden");
-            //     open_log_modal();
-            //     return;
-            // }
+            if (!token) {
+                error_label.classList.add("hidden");
+                open_log_modal();
+                return;
+            }
 
             const formData = getFormData(data, fileInput);
 
