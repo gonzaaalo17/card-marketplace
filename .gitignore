@@ -24,6 +24,7 @@ ehthumbs.db
 # Directorios de compilación si alguna vez usas algún tipo de preprocesador o compilador (ej. SASS, TypeScript)
 dist/
 build/
+target/
 
 # Archivos de configuración de Docker
 docker-compose.yml
