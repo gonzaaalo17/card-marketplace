@@ -1,18 +1,10 @@
 package ch.supsi.web.cardmarketplace.controller;
 
-import ch.supsi.web.cardmarketplace.model.Card;
-import ch.supsi.web.cardmarketplace.service.CardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
-
-    private final CardService cardService;
-
-    public MainController(CardService cardService) {
-        this.cardService = cardService;
-    }
 
     // Endpoint to home page
     @GetMapping("/")

@@ -1,6 +1,5 @@
 package ch.supsi.web.cardmarketplace.model;
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
