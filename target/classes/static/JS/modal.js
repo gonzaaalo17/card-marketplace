@@ -27,14 +27,23 @@ function ny_an_account() {
     open_reg_modal()
 }
 
-const ny_account = document.getElementById("modal_ny_an_account")
-const register = document.getElementById("signup")
-const login = document.getElementById("login")
-const close_register = document.getElementById("close-register")
-const close_login = document.getElementById("close-login")
+/**
+ * Since these buttons appear dynamically based on if the user is or not logged in, 
+ * we need to init the events on refresh so that they appear in the DOM.
+ * They are used on header.js
+ */
+function initModalEvents() {
+    const ny_account = document.getElementById("modal_ny_an_account")
+    const register = document.getElementById("signup")
+    const login = document.getElementById("login")
+    const close_register = document.getElementById("close-register")
+    const close_login = document.getElementById("close-login")
 
-register.addEventListener("click", open_reg_modal);
-close_register.addEventListener("click", close_reg_modal);
-login.addEventListener("click", open_log_modal);
-close_login.addEventListener("click", close_log_modal);
-ny_account.addEventListener("click", ny_an_account);
+    register.addEventListener("click", open_reg_modal);
+    close_register.addEventListener("click", close_reg_modal);
+    login.addEventListener("click", open_log_modal);
+    close_login.addEventListener("click", close_log_modal);
+    ny_account.addEventListener("click", ny_an_account);
+}
+
+document.addEventListener("DOMContentLoaded", initModalEvents);
