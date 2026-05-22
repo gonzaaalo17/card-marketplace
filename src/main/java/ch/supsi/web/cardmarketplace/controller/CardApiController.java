@@ -59,19 +59,21 @@ public class CardApiController {
         card.setVendor(vendor);
         card.setPrice(price);
         card.setRarity(rarity);
-        card.setCondition(condition);
+        card.setCardCondition(condition);
         card.setCollection(collection);
         card.setDescription(description);
-        card.setDate(LocalDateTime.now()); // Adds todays date
+        card.setCreatedDate(LocalDateTime.now()); // Adds todays date
         card.setImage(null);
 
-        cardService.addCard(card);
+        Card savedCard = cardService.addCard(card);
 
         if (!image.isEmpty()) {
-            storeImage(card, image);
+            storeImage(savedCard, image);
+
+            savedCard = cardService.addCard(savedCard);
         }
 
-        return ResponseEntity.ok(card); // This is to show "Form successfully submitted message"
+        return ResponseEntity.ok(savedCard); // This is to show "Form successfully submitted message"
     }
 
     // =========================
@@ -79,7 +81,7 @@ public class CardApiController {
     // =========================
     @GetMapping("/latest")
     public List<Card> getLatest() {
-        return cardService.getLatest(3);
+        return cardService.getLatest();
     }
 
     // =========================
@@ -105,7 +107,7 @@ public class CardApiController {
     // 5. Modal Card Preview (Home)
     // =========================
     @GetMapping("/{id}")
-    public Card getById(@PathVariable int id) {
+    public Card getById(@PathVariable Long id) {
         return cardService.getCardById(id);
     }
 
@@ -121,8 +123,9 @@ public class CardApiController {
             @RequestParam(required = false) List<String> collections,
             @RequestParam(required = false) List<String> conditions,
             @RequestParam(required = false) String rarity,
-            @RequestParam(required = false) String sort
+            @RequestParam(required = false) String sort,
+            @RequestParam(required = false) String date
     ) {
-        return cardService.searchPaged(page, size, name, vendor, collections, conditions, rarity, sort);
+        return cardService.searchPaged(page, size, name, vendor, collections, conditions, rarity, sort, date);
     }
 }

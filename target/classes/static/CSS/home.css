@@ -12,7 +12,7 @@ body {
 .body_container {
     background-image: url("../images/design/background.png");
     background-size: 100%;
-    background-repeat: no-repeat;
+    background-repeat: round;
     background-position: top;
 }
 
