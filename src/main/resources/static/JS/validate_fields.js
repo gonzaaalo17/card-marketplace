@@ -200,6 +200,7 @@ async function send_login_form(event, label) {
 
         show_confirmation("Login successful");
         close_log_modal();
+        window.location.reload(); // reload current window
 
     } else {
         console.log("Login form was not sent. ❌");

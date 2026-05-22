@@ -23,14 +23,14 @@ function buildQuery() {
     const activeGameButtons = document.querySelectorAll(".filter-btn.active[data-type='game']");
     if (activeGameButtons.length > 0) {
         const collections = Array.from(activeGameButtons).map(btn => btn.dataset.value);
-        params.append("collections", collections.join(","));
+        collections.forEach(c => params.append("collections", c));
     }
 
     // condition
     const activeConditionButtons = document.querySelectorAll(".filter-btn.active[data-type='condition']");
     if (activeConditionButtons.length > 0) {
         const conditions = Array.from(activeConditionButtons).map(btn => btn.dataset.value);
-        params.append("conditions", conditions.join(","));
+        conditions.forEach(c => params.append("conditions", c));
     }
 
     // rarity

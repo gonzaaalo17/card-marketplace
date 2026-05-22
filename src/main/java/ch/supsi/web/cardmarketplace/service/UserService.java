@@ -1,47 +1,44 @@
 package ch.supsi.web.cardmarketplace.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
 import ch.supsi.web.cardmarketplace.model.User;
+import ch.supsi.web.cardmarketplace.repository.UserRepository;
 
 @Service
 public class UserService {
 
-    private final List<User> users = new ArrayList<>();
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public User register(User user) {
 
-        // Check username/email already exists
-        boolean exists = users.stream()
-            .anyMatch(u ->
-                u.getUsername().equals(user.getUsername()) ||
-                u.getEmail().equals(user.getEmail())
-            );
+        if (user.getUsername() == null || user.getUsername().isBlank() ||
+            user.getEmail() == null || user.getEmail().isBlank()) {
+            throw new RuntimeException("Username and email are required");
+        }
+
+        boolean exists = userRepository.existsByUsernameOrEmail(
+            user.getUsername(), user.getEmail());
 
         if (exists) {
             throw new RuntimeException("User already exists");
         }
 
-        users.add(user);
-
-        return user;
+        return userRepository.save(user);
     }
 
     public String login(String username, String password) {
 
-        User user = users.stream()
-            .filter(u ->
-                u.getUsername().equals(username) &&
-                u.getPassword().equals(password)
-            )
-            .findFirst()
-            .orElseThrow(() -> new RuntimeException("Invalid credentials"));
+        Optional<User> user = userRepository.findByUsernameAndPassword(username, password);
 
-        return user.getUsername();
+        return user.orElseThrow(() -> new RuntimeException("Invalid credentials")).getUsername();
     }
 
     // This function uses Universally Unique Identifier built-in to generate a random id like:
