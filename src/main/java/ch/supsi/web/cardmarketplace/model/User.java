@@ -27,4 +27,12 @@ public class User {
     private String email;
 
     private String password;
+
+    private String role; /// Added as for spring security
+
+    /**
+     * ROLES:
+     *  - admin	ROLE_ADMIN
+     *  - user	ROLE_USER
+     */
 }

@@ -108,7 +108,7 @@ async function send_signup_form(event, labels) {
         console.log("Signup form sent successfully. ✅");
         const data = {
             name: document.getElementById('sign_name_ip').value,
-            lastname: document.getElementById('sign_lastname_ip').value,
+            surname: document.getElementById('sign_lastname_ip').value,
             username: document.getElementById('sign_user_ip').value,
             email: document.getElementById('sign_email_ip').value,
             password: document.getElementById('sign_pass_ip').value
@@ -143,6 +143,7 @@ async function send_signup_form(event, labels) {
 
         } else {
             console.log("Signup failed ❌");
+            // TODO: If exception is 500 due to duplicate users -> User already exists
             show_cancel("Signup failed");
             return
         }
@@ -176,15 +177,22 @@ async function send_login_form(event, label) {
     event.preventDefault(); // Previene que no se envie por defecto
 
     if (validate_login_fields(label)) {
-        const data = {
-            username: document.getElementById('log_user_ip').value,
-            password: document.getElementById('log_pass_ip').value
-        };
+        const formData = new URLSearchParams(); // Datatype needed by SpringSecurity
 
-        const res = await fetch('/api/auth/login', {
+        formData.append(
+            "username",
+            document.getElementById('log_user_ip').value
+        );
+        formData.append(
+            "password",
+            document.getElementById('log_pass_ip').value
+        );
+
+        const res = await fetch('/login', { // Changed endpoint to fit Spring Security endpoint
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            credentials: "include",
+            body: formData
         });
 
         if (!res.ok) {
@@ -192,10 +200,10 @@ async function send_login_form(event, label) {
             return;
         }
 
-        const result = await res.json();
-        localStorage.setItem("token", result.token);
-        localStorage.setItem("username", result.user); // Stores token in localStorage so that can be retrieved from sell.js for autofill
-
+        // Store username in localstorage
+        const username = document.getElementById('log_user_ip').value;
+        localStorage.setItem("username", username);
+        
         console.log("Logged in ✅");
 
         show_confirmation("Login successful");
