@@ -1,9 +1,7 @@
 package ch.supsi.web.cardmarketplace.service;
 
-import java.util.Optional;
-import java.util.UUID;
-
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import ch.supsi.web.cardmarketplace.model.User;
 import ch.supsi.web.cardmarketplace.repository.UserRepository;
@@ -12,9 +10,11 @@ import ch.supsi.web.cardmarketplace.repository.UserRepository;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder; // Injecting password encoder from config
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public User register(User user) {
@@ -31,20 +31,13 @@ public class UserService {
             throw new RuntimeException("User already exists");
         }
 
+        // If tests pass encrypt password and save user with password encrypted
+        user.setPassword(
+            passwordEncoder.encode(user.getPassword())
+        );
+
         return userRepository.save(user);
     }
 
-    public String login(String username, String password) {
-
-        Optional<User> user = userRepository.findByUsernameAndPassword(username, password);
-
-        return user.orElseThrow(() -> new RuntimeException("Invalid credentials")).getUsername();
-    }
-
-    // This function uses Universally Unique Identifier built-in to generate a random id like:
-    // 550e8400-e29b-41d4-a716-446655440000
-    // Which will be used as a token
-    public String generateFakeToken() {
-        return UUID.randomUUID().toString();
-    }
+    // Since Login is entirely handled by UserDetailsService, we dont need a login method
 }

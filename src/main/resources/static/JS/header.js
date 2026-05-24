@@ -13,7 +13,7 @@ async function loadHeader() {
     renderAccount();
 }
 
-function renderAccount() {
+async function renderAccount() {
 
     /**
      * This function basically toggles between a code taken from bootstrap 
@@ -23,11 +23,14 @@ function renderAccount() {
      */
 
     const account = document.getElementById("account");
-
-    const token = localStorage.getItem("token");
     const username = localStorage.getItem("username");
+    
+    // Fetch /me endpoint
+    const response = await fetch("/api/auth/me", {
+        credentials: "include"
+    });
 
-    if (token) {
+    if (response.ok) {
 
         // HTML code taken from bootstrap
         account.innerHTML = `
@@ -105,16 +108,19 @@ function renderAccount() {
     }
 }
 
-function logout() {
-
+async function logout() {
     /**
-     * Logout removes data from localStorage and 
-     * reloads page so that it is re-rendered
+     * Now logout doesnt just remove items from localstorage, but
+     * makes a request on logout endpoint in Spring Security  
+     * and activates Session and cookie based logout workflow
      */
 
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
+    await fetch("/logout", {
+        method: "POST",
+        credentials: "include"
+    });
 
+    localStorage.removeItem("username");
     window.location.reload();
 }
 
