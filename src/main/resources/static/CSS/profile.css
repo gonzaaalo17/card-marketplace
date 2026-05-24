@@ -41,11 +41,11 @@ button:hover,
 }
 
 /* error labels */
-.contact_error.hidden {
+.profile_error.hidden {
     display: none;
 }
 
-.contact_error {
+.profile_error {
     color: red;
     font-size: 10px;
 }

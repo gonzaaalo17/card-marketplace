@@ -21,6 +21,7 @@
     <script src="/JS/header.js" defer></script>
     <script src="/JS/modal.js" defer></script>
     <script src="/JS/modal-message.js" defer></script>
+    <script src="/JS/validate_fields.js" defer></script>
     <script src="/JS/profile.js" defer></script>
 </head>
 
@@ -92,6 +93,7 @@
                                 type="text"
                                 id="name_ip"
                             >
+                            <label id="profile_error_name" class="profile_error hidden" for="name_ip">First Name must be A-Z, a-z.</label>
                         </div>
 
                         <div class="surname">
@@ -101,15 +103,17 @@
                                 type="text"
                                 id="surname_ip"
                             >
+                            <label id="profile_error_surname" class="profile_error hidden" for="surname_ip">Last Name must be A-Z, a-z.</label>
                         </div>
 
                         <div class="email">
                             <label for="email_ip">Email:</label>
 
                             <input
-                                type="email"
+                                type="text"
                                 id="email_ip"
                             >
+                            <label id="profile_error_email" class="profile_error hidden" for="email_ip">Email must be as example: example@example.com.</label>
                         </div>
 
                         <button

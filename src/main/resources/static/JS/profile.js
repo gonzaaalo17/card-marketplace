@@ -1,3 +1,7 @@
+// ========================
+// INIT
+// ========================
+
 document.addEventListener("DOMContentLoaded", () => {
     loadProfile();
     setupImagePreview();
@@ -63,26 +67,58 @@ function setupImagePreview() {
     });
 }
 
+// ========================
+// UPDATE PROFILE
+// ========================
+
+function validate_profile_fields(data, labels){
+    let valid = true;
+
+    valid = validate_names(labels[0], data.name) && valid;
+    valid = validate_names(labels[1], data.surname) && valid;
+    valid = validate_email(labels[2], data.email) && valid;
+
+    return valid
+}
+
 async function updateProfile(event) {
     event.preventDefault();
     try {
-
         const username = document.getElementById("username_ip").value;
+
+        const required_data = {
+            name: document.getElementById("name_ip").value,
+            surname: document.getElementById("surname_ip").value,
+            email: document.getElementById("email_ip").value
+        };
+
+        const labels = [
+            document.getElementById("profile_error_name"),
+            document.getElementById("profile_error_surname"),
+            document.getElementById("profile_error_email")
+        ];
+
+        if (!validate_profile_fields(required_data, labels)){
+            console.log("Profile form was not sent. ❌");
+            show_cancel("Profile form was not sent");
+            return
+        }
+
         const formData = new FormData();
 
         formData.append(
             "name",
-            document.getElementById("name_ip").value
+            required_data.name
         );
 
         formData.append(
             "surname",
-            document.getElementById("surname_ip").value
+            required_data.surname
         );
 
         formData.append(
             "email",
-            document.getElementById("email_ip").value
+            required_data.email
         );
 
         const imageInput =

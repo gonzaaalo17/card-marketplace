@@ -12,6 +12,7 @@ function autoFillVendor() {
     if (currentUser) {
         vendorInput.value = currentUser;
         vendorInput.disabled = true;
+        vendorInput.style.backgroundColor = "#f2f2f2"
     } else {
         vendorInput.placeholder = "Peter Parker";
         vendorInput.disabled = false;
