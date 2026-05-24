@@ -43,7 +43,7 @@ async function renderAccount() {
                 <button class="profile-btn" id="profile-toggle">
 
                     <img
-                        src="/images/design/default_avatar.jpeg"
+                        src="/user_uploads/${username}.jpg"
                         alt="avatar"
                     >
 
@@ -55,7 +55,7 @@ async function renderAccount() {
                         ${username}
                     </div>
 
-                    <a href="#">Profile</a>
+                    <a href="/profile">Profile</a>
                     <a href="#">My Cards</a>
 
                     <hr>

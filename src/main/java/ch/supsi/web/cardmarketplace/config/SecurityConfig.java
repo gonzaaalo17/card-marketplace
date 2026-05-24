@@ -52,9 +52,8 @@ public class SecurityConfig {
                  * Authenticated users should be able to update
                  * Only their owned cards
                  */
-                // .requestMatchers(
-                //     "" // To be added View My announcements
-                // ).authenticated()
+                .requestMatchers("/profile").authenticated()
+                .requestMatchers("/api/users/**").authenticated()
 
                 // ADMIN ONLY Endpoints
                 /**

@@ -16,6 +16,35 @@ public class UserService {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
+    // Finds by id
+    public User getById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> 
+            new RuntimeException("User not found"));
+    }
+
+    // Finds by username
+    public User getByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() ->
+            new RuntimeException("User not found"));
+    }
+
+    public User updateProfile(
+            String username,
+            String name,
+            String surname,
+            String email, 
+            String image
+    ) {
+        // Make changes on class
+        User user = getByUsername(username); // Finds user by username
+        user.setName(name);
+        user.setSurname(surname);
+        user.setEmail(email);
+        user.setImage(image);
+
+        // Update DB
+        return userRepository.save(user);
+    }
 
     public User register(User user) {
 

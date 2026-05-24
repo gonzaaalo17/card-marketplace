@@ -35,4 +35,10 @@ public class MainController {
     public String showSellCard() {
         return "sell";
     }
+
+    // Endpoint to sell card form
+    @GetMapping("/profile")
+    public String showEditProfile() {
+        return "profile";
+    }
 }
