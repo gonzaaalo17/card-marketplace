@@ -16,6 +16,8 @@ body {
 
 /* Global Hover*/
 
+a,
+button,
 .page,
 #login,
 #signup,
@@ -29,6 +31,8 @@ body {
     transition: transform 0.2s ease;
 }
 
+a:hover,
+button:hover,
 .page:hover,
 #login:hover,
 #signup:hover,

@@ -56,7 +56,7 @@ async function renderAccount() {
                     </div>
 
                     <a href="#">Profile</a>
-                    <a href="#">Settings</a>
+                    <a href="#">My Cards</a>
 
                     <hr>
 
