@@ -66,7 +66,7 @@ public class SecurityConfig {
 
                 // ADMIN ONLY Endpoints
                 /**
-                 * Admins can create, delete, update cards no matter user
+                 * Admins can delete cards no matter user
                  * To be configured
                  */
                 .requestMatchers("/api/cards/all").hasRole("ADMIN")
@@ -81,9 +81,14 @@ public class SecurityConfig {
                 .permitAll()
             )
 
+            // Logout should redirect to home
             .logout(logout -> logout
                 .logoutUrl("/logout")
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .deleteCookies("JSESSIONID")
                 .logoutSuccessUrl("/")
+                .permitAll()
             );
 
         return http.build();

@@ -12,6 +12,10 @@ import org.springframework.stereotype.Service;
 
 import jakarta.persistence.criteria.Predicate;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -75,7 +79,37 @@ public class CardService {
     }
 
     public void deleteCard(Long id) {
-        cardRepository.deleteById(id);
+        cardRepository.findById(id).ifPresent(card -> {
+            deleteImageFile(card);
+            cardRepository.delete(card);
+        });
+    }
+
+    /**
+     * This is a helper method to also clean up image associated with deleted card id
+     *  from uploads.
+     * @param card
+     */
+    private void deleteImageFile(Card card) {
+        String imagePath = card.getImage();
+        if (imagePath == null || imagePath.isBlank()) {
+            return;
+        }
+
+        String fileName = imagePath.contains("/")
+                ? imagePath.substring(imagePath.lastIndexOf('/') + 1)
+                : imagePath;
+
+        Path uploadPath = Paths.get(
+                System.getProperty("user.dir"),
+                "src", "main", "resources", "static", "uploads", fileName
+        );
+
+        try {
+            Files.deleteIfExists(uploadPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // -------------------

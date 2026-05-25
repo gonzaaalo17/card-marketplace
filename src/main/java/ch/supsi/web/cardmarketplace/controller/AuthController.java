@@ -59,7 +59,7 @@ public class AuthController {
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
-        user.setRole("ROLE_ADMIN");
+        user.setRole("ROLE_USER");
         user.setImage("/images/design/user_placeholder2.png");
 
         // Store image to user uploads
