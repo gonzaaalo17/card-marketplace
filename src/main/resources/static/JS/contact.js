@@ -2,24 +2,46 @@
 // FIELDS
 // ========================
 
-const inputs = [
-    document.getElementById("name_ip"),
-    document.getElementById("lastname_ip"),
-    document.getElementById("email_ip")
-];
+const username = localStorage.getItem("username");
 
-const localStorageData = [
-    localStorage.getItem("name"),
-    localStorage.getItem("lastname"),
-    localStorage.getItem("email")
-];
+const nameField = document.getElementById("name_ip");
+const lastNameField = document.getElementById("lastname_ip");
+const emailField = document.getElementById("email_ip");
 
-function autoFill() {
-    for (let i = 0; i < inputs.length; i++) {
-        if (localStorageData[i]) {
-            inputs[i].value = localStorageData[i];
-            inputs[i].disabled = true;
+const fields = [nameField, lastNameField, emailField];
+
+async function autoFill() {
+    if (!username) {
+        return
+    }
+
+    try {
+        const response = await fetch(`/api/users/${username}`,
+            {
+                credentials: "include"
+            }
+        );
+
+        if (!response.ok) {
+            show_cancel("Failed autofill");
+            throw new Error("Failed autofill");
         }
+
+        const user = await response.json();
+
+        nameField.value = user.name;
+        lastNameField.value = user.surname;
+        emailField.value = user.email;
+
+        // Set fields disabled
+        for (const field of fields) {
+            field.disabled = true;
+            field.style.backgroundColor = "#f2f2f2"
+        }
+
+    } catch(error) {
+        console.error(error);
+        show_cancel("Failed loading profile");
     }
 }
 

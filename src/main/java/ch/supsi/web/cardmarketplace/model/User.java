@@ -28,6 +28,8 @@ public class User {
 
     private String password;
 
+    private String image;
+
     private String role; /// Added as for spring security
 
     /**

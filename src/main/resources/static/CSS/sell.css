@@ -256,12 +256,12 @@ footer p {
 /* ========================
    HOVER
 ======================== */
-#login, #signup, .submit, .choose, .page, .image_frame {
+a, #login, #signup, #my-announcements, .submit, .choose, .page, .image_frame {
     transition: transform 0.2s ease;
 }
 
-#login:hover,
-#signup:hover,
+a:hover,
+button:hover,
 .submit:hover,
 .choose:hover,
 .page:hover{

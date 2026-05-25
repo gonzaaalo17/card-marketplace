@@ -12,6 +12,10 @@ import org.springframework.stereotype.Service;
 
 import jakarta.persistence.criteria.Predicate;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,8 +45,71 @@ public class CardService {
         return cardRepository.save(card);
     }
 
+    public Card updateCard(
+            Long id,
+            String name,
+            String vendor,
+            double price,
+            String rarity,
+            String condition,
+            String collection,
+            String description,
+            String imagePath
+    ) {
+        Card card = cardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Card not found"));
+
+        card.setName(name);
+        card.setVendor(vendor);
+        card.setPrice(price);
+        card.setRarity(rarity);
+        card.setCardCondition(condition);
+        card.setCollection(collection);
+        card.setDescription(description);
+
+        if (imagePath != null) {
+            card.setImage(imagePath);
+        }
+
+        return cardRepository.save(card);
+    }
+
     public Card getCardById(Long id) {
         return cardRepository.findById(id).orElse(null);
+    }
+
+    public void deleteCard(Long id) {
+        cardRepository.findById(id).ifPresent(card -> {
+            deleteImageFile(card);
+            cardRepository.delete(card);
+        });
+    }
+
+    /**
+     * This is a helper method to also clean up image associated with deleted card id
+     *  from uploads.
+     * @param card
+     */
+    private void deleteImageFile(Card card) {
+        String imagePath = card.getImage();
+        if (imagePath == null || imagePath.isBlank()) {
+            return;
+        }
+
+        String fileName = imagePath.contains("/")
+                ? imagePath.substring(imagePath.lastIndexOf('/') + 1)
+                : imagePath;
+
+        Path uploadPath = Paths.get(
+                System.getProperty("user.dir"),
+                "src", "main", "resources", "static", "uploads", fileName
+        );
+
+        try {
+            Files.deleteIfExists(uploadPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // -------------------

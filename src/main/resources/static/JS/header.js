@@ -22,7 +22,7 @@ async function renderAccount() {
      * If not, it will show buttons to login and log out.
      */
 
-    const account = document.getElementById("account");
+    const account = document.getElementById("header-container");
     const username = localStorage.getItem("username");
     
     // Fetch /me endpoint
@@ -34,38 +34,50 @@ async function renderAccount() {
 
         // HTML code taken from bootstrap
         account.innerHTML = `
-            <button id="my-announcements">
-                View my announcements
-            </button>
-
-            <div class="profile-dropdown">
-
-                <button class="profile-btn" id="profile-toggle">
-
-                    <img
-                        src="/images/design/default_avatar.jpeg"
-                        alt="avatar"
-                    >
-
+            <!--  Links to other pages -->
+            <nav>
+                <ul id="nav_pages">
+                    <li class="page"><a href="/">Home</a></li>
+                    <li class="page"><a href="/search">Search</a></li>
+                    <li class="page"><a href="/card/new">Sell</a></li>
+                    <li class="page"><a href="/about">About</a></li>
+                    <li class="page"><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div id="account">
+                <button id="my-announcements">
+                    View my announcements
                 </button>
 
-                <div class="dropdown-menu hidden" id="dropdown-menu">
+                <div class="profile-dropdown">
 
-                    <div class="dropdown-user">
-                        ${username}
+                    <button class="profile-btn" id="profile-toggle">
+
+                        <img
+                            src="/user_uploads/${username}.jpg"
+                            alt="avatar"
+                        >
+
+                    </button>
+
+                    <div class="dropdown-menu hidden" id="dropdown-menu">
+
+                        <div class="dropdown-user">
+                            ${username}
+                        </div>
+
+                        <a href="/profile">Profile</a>
+                        <a href="/my-announcements">My Cards</a>
+
+                        <hr>
+
+                        <a href="#" id="logout-btn">
+                            Sign out
+                        </a>
+
                     </div>
 
-                    <a href="#">Profile</a>
-                    <a href="#">Settings</a>
-
-                    <hr>
-
-                    <a href="#" id="logout-btn">
-                        Sign out
-                    </a>
-
                 </div>
-
             </div>
         `;
 
@@ -83,25 +95,40 @@ async function renderAccount() {
             menu.classList.toggle("hidden");
         });
 
-        document.addEventListener("click", () => {
-        const menu = document.getElementById("dropdown-menu");
+        document.getElementById('my-announcements').addEventListener('click', function() {
+            window.location.href = '/my-announcements';
+        });
 
-        if (menu) {
-            menu.classList.add("hidden");
-        }
-    });
+        document.addEventListener("click", () => {
+            const menu = document.getElementById("dropdown-menu");
+
+            if (menu) {
+                menu.classList.add("hidden");
+            }
+        });
 
     } else {
 
         // This was before
         account.innerHTML = `
-            <button id="login" type="button">
-                Log In
-            </button>
+            <!--  Links to other pages -->
+            <nav>
+                <ul id="nav_pages">
+                    <li class="page"><a href="/">Home</a></li>
+                    <li class="page"><a href="/search">Search</a></li>
+                    <li class="page"><a href="/about">About</a></li>
+                    <li class="page"><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div id="account">
+                <button id="login" type="button">
+                    Log In
+                </button>
 
-            <button id="signup" type="button">
-                Sign Up
-            </button>
+                <button id="signup" type="button">
+                    Sign Up
+                </button>
+            </div>
         `;
 
         initModalEvents(); // Adds events to open close login/signup modals (implemented in modal.js)
@@ -121,6 +148,7 @@ async function logout() {
     });
 
     localStorage.removeItem("username");
+    window.location.href = '/';
     window.location.reload();
 }
 

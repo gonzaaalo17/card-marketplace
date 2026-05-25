@@ -47,23 +47,30 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
             .userDetailsService(customUserDetailsService) // Here we are telling Spring to use our userDetails service
             .authorizeHttpRequests(auth -> auth
+                
+                // Need to explicitly mark this as public
+                .requestMatchers("/api/auth/register").permitAll()
+                
                 // AUTH REQUIRED Endpoints
                 /**
                  * Authenticated users should be able to update
                  * Only their owned cards
                  */
-                // .requestMatchers(
-                //     "" // To be added View My announcements
-                // ).authenticated()
+                .requestMatchers("/profile").authenticated()
+                .requestMatchers("/my-announcements").authenticated()
+                .requestMatchers("/edit-announcement").authenticated()
+                .requestMatchers("/card/new").authenticated()
+                .requestMatchers("/api/users/**").authenticated()
+                .requestMatchers("/api/cards/new").authenticated()
+                .requestMatchers("/api/cards/update").authenticated()
 
                 // ADMIN ONLY Endpoints
                 /**
-                 * Admins can create, delete, update cards no matter user
+                 * Admins can delete cards no matter user
                  * To be configured
                  */
-                // .requestMatchers(
-                //     ""
-                // ).hasRole("ADMIN")
+                .requestMatchers("/api/cards/all").hasRole("ADMIN")
+
 
                 // Pages and endpoints should be all public (easy and fast way to do it)
                 .anyRequest().permitAll()
@@ -74,9 +81,14 @@ public class SecurityConfig {
                 .permitAll()
             )
 
+            // Logout should redirect to home
             .logout(logout -> logout
                 .logoutUrl("/logout")
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .deleteCookies("JSESSIONID")
                 .logoutSuccessUrl("/")
+                .permitAll()
             );
 
         return http.build();
