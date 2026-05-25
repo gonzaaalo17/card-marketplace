@@ -1,0 +1,433 @@
+/* GENERAL */
+body {
+    display: grid;
+    grid-template-rows:
+        auto   /* header */
+        auto   /* hero */
+        auto   /* content */
+        auto;  /* footer */
+
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+}
+
+/* Global Hover*/
+
+a,
+button,
+.page,
+#login,
+#signup,
+#search_button,
+.category,
+.viewmore,
+.card_image,
+.pagination button,
+.filters button,
+.sort {
+    transition: transform 0.2s ease;
+}
+
+a:hover,
+button:hover,
+.page:hover,
+#login:hover,
+#signup:hover,
+#search_button:hover,
+.category:hover,
+.viewmore:hover,
+.card_image:hover,
+.pagination button:hover,
+.filters button:hover,
+.sort:hover {
+    transform: scale(1.08);
+    cursor: pointer;
+}
+
+.body_container {
+    background-image: url("../images/design/background.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+main {
+    margin-bottom: 200px;
+}
+
+/* HEADER (igual que home) */
+.header-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 90px;
+}
+
+nav {
+    justify-self: start;
+    margin-left: 40px;
+}
+
+#nav_pages {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page a {
+    margin-right: 40px;
+    font-size: 18px;
+    color: #3B3B3F;
+    text-decoration: none;
+}
+
+
+#account {
+    justify-self: end;
+    margin-right: 40px;
+}
+
+#login, #signup {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 50px;
+    height: 40px;
+    width: 150px;
+    margin-left: 10px;
+}
+
+#login {
+    border: none;
+    color: white;
+    background-color: #7CBFFC;
+}
+
+#signup {
+    background-color: transparent;
+    color: #B2B3B6;
+    border: 2px solid #B2B3B6;
+}
+
+/* HERO SEARCH */
+
+#logo_home img{
+    height: 330px;
+    width: auto;
+}
+
+.hero_search {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    margin-bottom: 60px;
+}
+
+.hero_search h1 {
+    font-family: 'Montserrat';
+    font-size: 40px;
+    font-weight: 600;
+    color: #7CBFFC;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff;
+}
+
+/* SEARCH BAR */
+.search-container {
+    display: flex;
+    border-radius: 50px;
+    border: 2px solid #B2B3B6;
+    background: white;
+    overflow: hidden;
+    margin: 20px 0 40px 0;
+}
+
+#search_bar {
+    font-family: 'Montserrat';
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 700px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+#search_button {
+    margin-left: 20px;
+    background-image: url("../images/design/magnifying-glass-3.png");
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    width: 40px;
+    background-color: transparent;
+}
+
+/* CATEGORIES */
+.categories {
+    display: flex;
+    align-items: center;
+}
+
+.category, #category-football {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url("../images/design/button.png");
+    background-size: 200px 65px;
+    background-repeat: no-repeat;
+    border: none;
+    background-color: transparent;
+
+    height: 65px;
+    width: 200px;
+    margin-left: 25px;
+}
+
+.category img {
+    width: 100px;
+}
+
+#category-football {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#category-football img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+
+/* SECTION */
+.announcements_section {
+    padding: 0 50px;
+}
+
+/* RESULTS HEADER */
+.results_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sort {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+    background-color: white;
+    border-radius: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: 20px;
+}
+
+/* GRID */
+#cards_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* CARD */
+.card_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 4px solid white;
+    border-radius: 25px;
+
+    background-image: linear-gradient(to bottom right, #F0F8FD, transparent);
+
+    padding: 20px;
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+.card_image {
+    width: 180px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.card_item h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.sports_category {
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    color: #3B3B3F;
+}
+
+.game_logo {
+    height: 50px;
+    margin: 10px 0;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.meta {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.meta div{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.meta img {
+    height: 15px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+/* BUTTON */
+.viewmore {
+    font-family: 'Montserrat';
+    color: #3B3B3F;
+    font-size: 16px;
+
+    background-image: url("../images/design/button.png");
+    background-size: 170px 40px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+
+    border: none;
+
+    width: 170px;
+    height: 40px;
+
+    font-weight: bold;
+}
+
+/* MODAL ACTION BUTTONS */
+.modal_actions {
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.edit-btn,
+.delete-btn {
+    font-family: 'Montserrat';
+    font-size: 16px;
+
+    border: 2px solid white;
+    border-radius: 50px;
+
+    width: 180px;
+    height: 45px;
+
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.edit-btn {
+    background-color: #7CBFFC;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #ff5c5c;
+    color: white;
+}
+
+/* DELETE MODAL */
+#delete-modal {
+    position: fixed;
+    z-index: 9999;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background-color: white;
+
+    border-radius: 25px;
+    padding: 40px;
+
+    box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+
+.delete-modal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.delete-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.delete-buttons button {
+    width: 120px;
+    height: 45px;
+
+    font-weight: 600;
+    font-family: 'Montserrat';
+    font-size: 16px;
+
+    border: none;
+    border-radius: 50px;
+
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+#confirm-delete {
+    background-color: #ff5c5c;
+    color: white;
+}
+
+#cancel-delete {
+    background-color: #7CBFFC;
+    color: white;
+}
+
+/* FOOTER */
+footer {
+    background-color: white;
+    color: #B5B6BA;
+    font-size: 15px;
+    font-weight: 200;
+}
+
+/* HIDDEN */
+.hidden {
+    display: none;
+}

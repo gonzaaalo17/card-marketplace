@@ -144,21 +144,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            const token = localStorage.getItem("token");
-
-            if (!token) {
-                error_label.classList.add("hidden");
-                open_log_modal();
-                return;
-            }
-
             const formData = getFormData(data, fileInput);
 
             const response = await fetch("/api/cards/new", {
                 method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                },
                 body: formData
             });
 

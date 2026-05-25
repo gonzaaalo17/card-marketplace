@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Card Heaven - Edit Announcement</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Gonzalo Lopez">
+    <meta name="description" content="Edit trading card announcement">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/CSS/edit-announcement.css">
+    <link rel="stylesheet" href="/CSS/modal.css">
+    <link rel="stylesheet" href="/CSS/modal-confirm.css">
+    <link rel="stylesheet" href="/CSS/modal-error.css">
+    <link rel="stylesheet" href="/CSS/header.css">
+
+    <!-- JS -->
+    <script src="/JS/modal.js" defer></script>
+    <script src="/JS/validate_fields.js" defer></script>
+    <script src="/JS/edit-announcement.js" defer></script>
+    <script src="/JS/modal-message.js" defer></script>
+    <script src="/JS/header.js" defer></script>
+</head>
+
+<body>
+
+    <div class="body_container">
+
+        <div id="header-placeholder"></div>
+
+        <main>
+
+            <section class="hero">
+
+                <div id="logo_preview">
+                    <img src="/images/design/CardHeaven_centered_oneline.png" alt="Card Heaven logo">
+                </div>
+
+                <div id="title">
+                    <h1>Edit your announcement</h1>
+                </div>
+
+            </section>
+
+            <section class="card">
+
+                <div class="card_container">
+
+                    <form id="edit-form">
+
+                        <!-- LEFT -->
+                        <div class="card_image">
+
+                            <div class="image_frame">
+
+                                <img id="preview"
+                                     src=""
+                                     alt="Card preview"
+                                     style="display:none;">
+
+                                <p id="placeholder">
+                                    Card Photo
+                                </p>
+
+                            </div>
+
+                            <input
+                                type="file"
+                                id="card_image"
+                                class="choose"
+                                name="image"
+                                accept="image/*"
+                            >
+
+                        </div>
+
+                        <!-- RIGHT -->
+                        <div class="info">
+
+                            <div class="card_name">
+                                <label for="card_name_ip">
+                                    Card name:
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="card_name_ip"
+                                    name="name"
+                                >
+                            </div>
+
+                            <div class="vendor">
+                                <label for="vendor_ip">
+                                    Author:
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="vendor_ip"
+                                    name="vendor"
+                                    disabled
+                                >
+                            </div>
+
+                            <div class="price-rarity">
+
+                                <div class="price">
+
+                                    <label for="price_ip">
+                                        Price:
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="price_ip"
+                                        name="price"
+                                        step="0.01"
+                                    >
+
+                                </div>
+
+                                <div class="rarity">
+
+                                    <label for="rarity_ip">
+                                        Rarity level:
+                                    </label>
+
+                                    <select id="rarity_ip"
+                                            name="rarity"
+                                            required>
+
+                                        <option>Ultra Rare</option>
+                                        <option>Rare</option>
+                                        <option>Uncommon</option>
+                                        <option>Common</option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                            <div class="condition-collection">
+
+                                <div class="condition">
+
+                                    <label for="condition_ip">
+                                        Card condition:
+                                    </label>
+
+                                    <select id="condition_ip"
+                                            name="condition"
+                                            required>
+
+                                        <option>Mint</option>
+                                        <option>Near-Mint</option>
+                                        <option>Played</option>
+                                        <option>Damaged</option>
+
+                                    </select>
+
+                                </div>
+
+                                <div class="collection">
+
+                                    <label for="collection_ip">
+                                        Collection:
+                                    </label>
+
+                                    <select id="collection_ip"
+                                            name="collection"
+                                            required>
+
+                                        <option>Pokémon</option>
+                                        <option>Yu-Gi-Oh!</option>
+                                        <option>Magic The Gathering</option>
+                                        <option>Sports</option>
+                                        <option>Other</option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                            <div class="description">
+
+                                <label for="description_ip">
+                                    Description:
+                                </label>
+
+                                <textarea
+                                    id="description_ip"
+                                    name="description"
+                                ></textarea>
+
+                            </div>
+
+                            <label
+                                id="error_submission"
+                                class="error hidden">
+
+                                Please fill out all mandatory fields.
+
+                            </label>
+
+                            <button class="submit"
+                                    type="submit">
+
+                                Update
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <footer>
+        <p>
+            <b>Copyleft CC-by 2025 by Gonzalo Lopez</b>
+        </p>
+    </footer>
+
+    <!-- Overlay -->
+    <div id="overlay" class="hidden"></div>
+
+    <!-- Messages -->
+    <div id="modal-confirm" class="hidden">
+        <img src="/images/design/checked.png" alt="check">
+        <p></p>
+    </div>
+
+    <div id="modal-error" class="hidden">
+        <img src="/images/design/cancel.png" alt="check">
+        <p></p>
+    </div>
+
+</body>
+</html>

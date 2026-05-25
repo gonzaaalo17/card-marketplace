@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Card Heaven - My Announcements</title>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Gonzalo Lopez">
+    <meta name="description" content="Manage your announcements">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/CSS/my-announcements.css">
+    <link rel="stylesheet" href="/CSS/modal.css">
+    <link rel="stylesheet" href="/CSS/modal-card.css">
+    <link rel="stylesheet" href="/CSS/modal-confirm.css">
+    <link rel="stylesheet" href="/CSS/modal-error.css">
+    <link rel="stylesheet" href="/CSS/header.css">
+
+    <!-- JS -->
+    <script src="/JS/my-announcements.js" defer></script>
+    <script src="/JS/modal.js" defer></script>
+    <script src="/JS/header.js" defer></script>
+    <script src="/JS/modal-message.js" defer></script>
+</head>
+
+<body>
+
+<div class="body_container">
+
+    <!-- HEADER -->
+    <div id="header-placeholder"></div>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero_search">
+
+            <div id="logo_home">
+                <img src="/images/design/CardHeaven_centered.png" alt="Logo">
+            </div>
+
+            <h1>My Announcements</h1>
+
+            <!-- SEARCH -->
+            <div class="search-container">
+                <button id="search_button" type="submit"></button>
+                <input id="search_bar" type="search" placeholder="Search your cards...">
+            </div>
+
+            <!-- CATEGORIES -->
+            <div class="categories">
+
+                <button class="category" data-category="Pokémon">
+                    <img src="/images/design/pokemon_trading_card_game_logo.png" alt="pokemon">
+                </button>
+
+                <button class="category" data-category="Yu-Gi-Oh!">
+                    <img src="/images/design/Yu-Gi-Oh-Logo.png" alt="ygo">
+                </button>
+
+                <button class="category" data-category="Magic The Gathering">
+                    <img src="/images/design/Magic-The-Gathering-Logo.png" alt="mgt">
+                </button>
+
+                <button class="category" id="category-football" data-category="Sports">
+                    <img src="/images/design/football.png" alt="sports">
+                    Sports
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- RESULTS -->
+        <section class="announcements_section">
+
+            <div class="results_header">
+                <p></p>
+
+                <select class="sort">
+                    <option value="">Sort By</option>
+                    <option value="price">Price</option>
+                    <option value="date">Date</option>
+                    <option value="rarity">Rarity</option>
+                </select>
+            </div>
+
+            <!-- GRID -->
+            <div id="cards_container"></div>
+
+        </section>
+
+    </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p><b>Copyleft CC-by 2025 by Gonzalo Lopez</b></p>
+</footer>
+
+<!-- OVERLAY -->
+<div id="overlay" class="hidden"></div>
+
+<!-- CARD MODAL -->
+<div class="modal_card hidden">
+
+    <div class="modal_card_container">
+
+        <span id="close-card" class="close_card">&times;</span>
+
+        <div class="modal_card_hero">
+            <img src="/images/design/CardHeaven_notext.png" alt="logo">
+            <h1>Card preview</h1>
+        </div>
+
+        <section class="modal_card_view"></section>
+
+    </div>
+</div>
+
+<!-- DELETE CONFIRMATION -->
+<div id="delete-modal" class="hidden">
+
+    <div class="delete-modal-container">
+        <span id="close-card-delete" class="close_card">&times;</span>
+
+        <h2>Delete announcement?</h2>
+
+        <p>This action cannot be undone.</p>
+
+        <div class="delete-buttons">
+            <button id="confirm-delete">Yes</button>
+            <button id="cancel-delete">No</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- MESSAGE MODALS -->
+<div id="modal-confirm" class="hidden">
+    <img src="/images/design/checked.png" alt="check">
+    <p></p>
+</div>
+
+<div id="modal-error" class="hidden">
+    <img src="/images/design/cancel.png" alt="cancel">
+    <p></p>
+</div>
+
+</body>
+</html>

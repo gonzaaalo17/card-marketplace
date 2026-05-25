@@ -36,9 +36,21 @@ public class MainController {
         return "sell";
     }
 
-    // Endpoint to sell card form
+    // Endpoint to see and edit profile info
     @GetMapping("/profile")
     public String showEditProfile() {
         return "profile";
+    }
+
+    // Endpoint to see my cards
+    @GetMapping("/my-announcements")
+    public String showMyCards() {
+        return "my-announcements";
+    }
+
+    // Endpoint to edit announcement -> must be private as only my announcements sends id
+    @GetMapping("/edit-announcement")
+    public String editAd() {
+        return "edit-announcement";
     }
 }

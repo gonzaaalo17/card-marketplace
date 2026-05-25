@@ -41,8 +41,41 @@ public class CardService {
         return cardRepository.save(card);
     }
 
+    public Card updateCard(
+            Long id,
+            String name,
+            String vendor,
+            double price,
+            String rarity,
+            String condition,
+            String collection,
+            String description,
+            String imagePath
+    ) {
+        Card card = cardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Card not found"));
+
+        card.setName(name);
+        card.setVendor(vendor);
+        card.setPrice(price);
+        card.setRarity(rarity);
+        card.setCardCondition(condition);
+        card.setCollection(collection);
+        card.setDescription(description);
+
+        if (imagePath != null) {
+            card.setImage(imagePath);
+        }
+
+        return cardRepository.save(card);
+    }
+
     public Card getCardById(Long id) {
         return cardRepository.findById(id).orElse(null);
+    }
+
+    public void deleteCard(Long id) {
+        cardRepository.deleteById(id);
     }
 
     // -------------------
