@@ -29,14 +29,16 @@ public class CardApiController {
     // This function takes the file from the form and places it in uploads folder with id of the card
     // Attribute image in the card points to this image so that it can be retrieved from frontend
     // Card stores Path, not whole file. Whole file is in /uploads.
-    private void storeImage(Card card, MultipartFile image) throws IOException {
+    private String storeImage(Card card, MultipartFile image) throws IOException {
         String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/uploads/";
         String fileName = card.getId() + ".jpg";
 
         Path filePath = Paths.get(uploadDir + fileName);
         Files.write(filePath, image.getBytes());
 
-        card.setImage("/uploads/" + fileName);
+        String imagePath = "/uploads/" + fileName;
+        card.setImage(imagePath);
+        return imagePath;
     }
 
     // =========================
@@ -73,8 +75,8 @@ public class CardApiController {
         Card savedCard = cardService.addCard(card);
 
         if (!image.isEmpty()) {
-            storeImage(savedCard, image);
-
+            String imagePath = storeImage(savedCard, image);
+            savedCard.setImage(imagePath);
             savedCard = cardService.addCard(savedCard);
         }
 
@@ -129,8 +131,7 @@ public class CardApiController {
 
         String imagePath = null;
         if (image != null && !image.isEmpty()) {
-            storeImage(existingCard, image);
-            imagePath = existingCard.getImage();
+            imagePath = storeImage(existingCard, image);
         }
 
         Card updatedCard = cardService.updateCard(
