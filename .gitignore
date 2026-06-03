@@ -5,6 +5,7 @@ node_modules/
 *.log
 
 # Archivos de configuración de IDEs (como Visual Studio Code)
+.idea/
 .vscode/
 
 # Archivos de sistema (por ejemplo, de MacOS)
