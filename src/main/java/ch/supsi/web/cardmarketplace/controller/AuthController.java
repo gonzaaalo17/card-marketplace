@@ -36,16 +36,18 @@ public class AuthController {
         String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/user_uploads/";
         String fileName = user.getUsername() + ".jpg";
 
-        Path userdefaulPath = Paths.get(
-            System.getProperty("user.dir") +
-            "/src/main/resources/static" +
-            user.getImage()
-        ); // Debug
+        Path sourcePath = Paths.get(
+            System.getProperty("user.dir"),
+            "src/main/resources/static/images/design/user_placeholder2.jpg"
+        );
 
-        Path filePath = Paths.get(uploadDir + fileName);
+        Path targetDir = Paths.get(uploadDir);
+        Files.createDirectories(targetDir);
 
-        // Takes user path and puts it to uploads to have a default upload.
-        Files.copy(userdefaulPath, filePath, StandardCopyOption.REPLACE_EXISTING);
+        Path filePath = targetDir.resolve(fileName);
+
+        // Copy the default placeholder image into the user uploads folder.
+        Files.copy(sourcePath, filePath, StandardCopyOption.REPLACE_EXISTING);
     }
 
     @PostMapping("/register")
@@ -60,7 +62,7 @@ public class AuthController {
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         user.setRole("ROLE_USER");
-        user.setImage("/images/design/user_placeholder2.png");
+        user.setImage("/images/design/user_placeholder2.jpg");
 
         // Store image to user uploads
         storeImage(user);
